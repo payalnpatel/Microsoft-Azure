@@ -41,7 +41,7 @@ Describe cloud service types
 ## Describe Azure Architecture and Services
 
 ### Describe the Core Architectural Components of Azure
-- regions: different geographical locations around the globe that contain Azure datacenters. A region is a geographical area on the planet that contains at least one, but potentially multiple datacenters that are nearby and networked together with a low-latency network.  
+- <b>regions:</b> different geographical locations around the globe that contain Azure datacenters. A region is a geographical area on the planet that contains at least one, but potentially multiple datacenters that are nearby and networked together with a low-latency network.  
 - 
 - Organzinging structure for resources in Azure has 4 levels - management groups, subscriptions, resource groups, and resources 
   - <b>resources:</b> instances of services that you create (i.e. VMs, storage, SQL DBs, etc.) 
@@ -50,8 +50,8 @@ Describe cloud service types
   - <b>subscriptions:</b> a subscription groups together user accounts and the resources that have been created by those user accounts.  For each subscription, there are limits or quotas on the amount of resources that you can create and use.  Organizations can use subscriptoins to manage costs and the resources that are created by users, teams, or projects.
   - <b>management groups:</b> these groups help you manage access, policy, and compliance for multiple subscriptions. all subscriptions in a management group automatically inherit the conditions applied to the management group.
     - provides a level of scope above subscriptions.  
-- Availability Zone: physically separate datacenters within an Azure region.  Each AZ is made up of one or more datacenters equipped with independent power, cooling, and networking.  An AZ is set up to be an isolation boundary -- if one zone goes down, the other continues working.  Not every region has support for AZs. 
-- Region Pairs: Each Azure Region is always paired with another region within the same geography (such as US, Europe, or Asia) at least 300 miles away.  This approach allows for the replication of resources (such as VM storage) across a geography that helps reduce the likelihood of interruptions because of events such as natural disasters, civil unrest, power outages, or physical network outages that affect both regions at once. 
+- <b>Availability Zone:</b> physically separate datacenters within an Azure region.  Each AZ is made up of one or more datacenters equipped with independent power, cooling, and networking.  An AZ is set up to be an isolation boundary -- if one zone goes down, the other continues working.  Not every region has support for AZs. 
+- <b>Region Pairs:</b> Each Azure Region is always paired with another region within the same geography (such as US, Europe, or Asia) at least 300 miles away.  This approach allows for the replication of resources (such as VM storage) across a geography that helps reduce the likelihood of interruptions because of events such as natural disasters, civil unrest, power outages, or physical network outages that affect both regions at once. 
 
 • describe Azure regional, regional pairs, and sovereign regions
 • describe availability zones
@@ -98,7 +98,16 @@ File Sync
 ## Describe Azure Management and Governance
 
 ### Describe Cost Management in Azure
-- 
+- Factors that affect cost
+  - Resource Type
+  - Usage Meters
+  - Resource Usage 
+  - Azure Subscription Types
+  - Azure Marketplace 
+  - Location
+  - Zones for Billing Network Traffic 
+- <b>Pricing Calculator:</b> use to determine which Azure services best fit your budget. helps determine cost --
+- <b>Total Cost of Ownership (TCO) Calculator:</b> helps estimate the cost savings of operating your solution on Azure over time compared to operating in your on-prem datacenter. 
 
 - describe factors that can affect costs in Azure
 • compare the Pricing calculator and the Total Cost of Ownership (TCO) calculator
