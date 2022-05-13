@@ -88,11 +88,26 @@ virtual subnets, peering, Azure DNS, Azure VPN Gateway, and Azure ExpressRoute
 File Sync
 • describe migration options, including Azure Migrate and Azure Data Box
 ### Describe Azure Identity, Access, and Security 
+- <b>Authentication vs. Authorization</b>
+  - <b>Authentication (AuthN):</b> the process of establishing the identity of a person or service that wants access to a resource. Involves the act of challenging a part of legitimate credentials and provides the basis for creating a security principal for identity access control.
+    - It establishes whether the user is who they say they are. 
+    - authentication establishes the user's identity 
+  - <b>Authorization (AuthZ):</b> the process of establishing what level of access an authenticated person or service has. 
+    - specifies what data they're allowed access to and what they can do with it. 
+    - It establishes the level of access that an authenticated user has. 
+
 
 
 • describe directory services in Azure, including Azure Active Directory (Azure AD) and Azure Active Directory Domain Services (Azure AD DS)
 • describe authentication methods in Azure, including single sign-on (SSO), multifactor authentication, and passwordless
-• describe external identities and guest access in Azure
+- <b>Single Sign-On (SSO):</b> SSO enables a user to sign in one time and use that credential to access multiple resources and applications from different providers. 
+- <b>Multifactor Authentication (MFA):</b> MFA is a process where a user is prompted during the sign-in process for an additional form of identification.  Examples include a code from their mobile phone or a fingerprint scan. 
+  - MFA provides additional security for your identities by requiring two or more elements to fully authenicate. These elements fall into 3 categories:
+    - <b>Something the user <i>knows</i></b> - might be an email address or password
+    - <b>Something the user <i>has</i></b> - might be a code that's sent to the user's mobile phone
+    - <b>Something the user <i>is</i></b> - typically some sort of biometric property such as a fingerprint or face scan 
+  - MFA increase identity security by limiting the impact of credential exposure. 
+descibe external identities and guest access in Azure
 • describe Azure AD Conditional Access
 • describe Azure role-based access control (RBAC)
 • describe the concept of Zero Trust
@@ -139,16 +154,16 @@ File Sync
 
 
 ### Describe Features and Tools for Managing and Deploying Azure Resources 
-- Azure Portal: a web-based user interface you can access virtually ever feature of Azure from.
-- Azure PowerShell: a shell which developers and DevOps and IT Professionals can executed commands called cmdlets from.  These commands call the Azure REST API to perform every possible management task in Azure.  Cmdlets can be executed independently or combined into a script file and executed together to orchestrate the route setup/teardown/maintenance of single/multiple resources / the deployment of an entire infrastructure from imperative code 
+- <b>Azure Portal:</b> a web-based user interface you can access virtually ever feature of Azure from.
+- <b>Azure PowerShell:</b> a shell which developers and DevOps and IT Professionals can executed commands called cmdlets from.  These commands call the Azure REST API to perform every possible management task in Azure.  Cmdlets can be executed independently or combined into a script file and executed together to orchestrate the route setup/teardown/maintenance of single/multiple resources / the deployment of an entire infrastructure from imperative code 
   - likely to prefer PowerShell if you come from a Windows background 
-- Azure CLI: command line interface - an executable program with which a developer, DevOps professional, or IT professional can execute commands in Bash 
+- <b>Azure CLI:</b> command line interface - an executable program with which a developer, DevOps professional, or IT professional can execute commands in Bash 
   - likely to prefer Azure CLI if you come from a Linux background 
-- ARM Templates: Azure Resource Manager templates - describe the resources you want to use in a declarative JSON format.  ARM template is verified before any code is executed to ensure that the resources will be created and connected correctly.  The template then orchestrates the creation of those resources in parallel.  
+- <b>ARM Templates:</b> Azure Resource Manager templates - describe the resources you want to use in a declarative JSON format.  ARM template is verified before any code is executed to ensure that the resources will be created and connected correctly.  The template then orchestrates the creation of those resources in parallel.  
   - Can include both PowerShell and/or Azure CLI Scripts 
   - Helpful for repeatable deployments done in a consistent manner 
 - For one-off scenarios, you may prefer more agile tools like PowerShell, Azure CLI scripts, or the Azure Portal.
-- Azure Mobile App - provides iOS and Android access to your Azure resources when you're away from your computer.
+- <b>Azure Mobile App</b> - provides iOS and Android access to your Azure resources when you're away from your computer.
 - describe Azure Cloud Shell, including Azure CLI and Azure PowerShell
 • describe the purpose of Azure Arc
 • describe Azure Resource Manager and Azure Resource Manager templates (ARM
