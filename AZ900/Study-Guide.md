@@ -45,7 +45,6 @@ Describe cloud service types
 
 ### Describe the Core Architectural Components of Azure
 - <b>regions:</b> different geographical locations around the globe that contain Azure datacenters. A region is a geographical area on the planet that contains at least one, but potentially multiple datacenters that are nearby and networked together with a low-latency network.  
-- 
 - Organzinging structure for resources in Azure has 4 levels - management groups, subscriptions, resource groups, and resources 
   - <b>resources:</b> instances of services that you create (i.e. VMs, storage, SQL DBs, etc.) 
     - resources are created in regions 
@@ -57,9 +56,8 @@ Describe cloud service types
 - <b>Region Pairs:</b> Each Azure Region is always paired with another region within the same geography (such as US, Europe, or Asia) at least 300 miles away.  This approach allows for the replication of resources (such as VM storage) across a geography that helps reduce the likelihood of interruptions because of events such as natural disasters, civil unrest, power outages, or physical network outages that affect both regions at once. 
 
 • describe Azure regional, regional pairs, and sovereign regions
-• describe availability zones
 • describe Azure datacenters
-• describe the hierarchy of resource groups, subscriptions, and management groups
+
 
 
 ### Describe Azure Compute and Networking Services
@@ -120,28 +118,28 @@ descibe external identities and guest access in Azure
 • describe the purpose of the defense in depth model
 - A <b>Defense-in-Depth</b> strategy uses a series of mechanisms to slow the advance of an attack that aims at acquiring unauthorized access to data.  The objective is to protect information and prevent it from being stolen by those who aren't authorized to access it.  
   - Each layer provides protection so that if one layer is breached, a subsequent layer is already in place to prevent further exposure.  This approach removes reliance on any single layer of protection.  It slows down an attack and provides alert telemetry that security teams can act upon, either automatically or manually.  
-    - Physical Security - the first line of defense to protect computing hardware in the datacenter 
+    - <b>Physical Security</b> - the first line of defense to protect computing hardware in the datacenter 
       - Physically securing access to buildings and controlling access to computing hardware within the datacenter 
-    - Identity and Access - controls access to infrastructure and change control 
+    - <b>Identity and Access</b> - controls access to infrastructure and change control 
       - control access to infrastructure and change control
       - use SSO and MFA
       - audit events and changes 
-    - Perimeter - uses distributed denial of service (DDoS) protection to filter larger-scale attacks before they can cause a denial of service for users 
+    - <b>Perimeter</b> - uses distributed denial of service (DDoS) protection to filter larger-scale attacks before they can cause a denial of service for users 
       - use DDoS protection to filter large-scale attacks before they can affect the availability of a system for users
       - use perimeter firewalls to identify and alert malicious attacks against your network 
       - at the network perimeter it's about protecting network-based attacks against your resources 
-    - Network - limits communications between resources through segmentation and access controls 
+    - <b>Network</b> - limits communications between resources through segmentation and access controls 
       - limit communication between resources
       - deny by default
       - restrict inbound internet access and limit outbound access where appropriate 
       - implement secure connectivity to on-premises networks 
       - at this layer the focus is on limiting network connectivity across all your resource to allow only what's required 
-    - Compute - secure access to VMs 
+    - <b>Compute</b> - secure access to VMs 
       - implement endpoint protection on devices and keep systems patches and current 
-    - Application - helps ensure that apps are secure and free of security vulnerabilities 
+    - <b>Application</b> - helps ensure that apps are secure and free of security vulnerabilities 
       - store sensitive app secrets in a secure storage medium
       - make security a design requirement for all application development
-    - Data - controls access to business and customer data that you need to protect
+    - <b>Data</b> - controls access to business and customer data that you need to protect
 • Describe the purpose of Microsoft Defender for Cloud
 ## Describe Azure Management and Governance
 
@@ -156,11 +154,11 @@ descibe external identities and guest access in Azure
   - Zones for Billing Network Traffic 
 - <b>Pricing Calculator:</b> use to determine which Azure services best fit your budget. helps determine cost --
 - <b>Total Cost of Ownership (TCO) Calculator:</b> helps estimate the cost savings of operating your solution on Azure over time compared to operating in your on-prem datacenter. 
-
-- describe factors that can affect costs in Azure
-• compare the Pricing calculator and the Total Cost of Ownership (TCO) calculator
-• describe the Azure Cost Management and Billing tool
+- <b>Azure Cost Management and Billing Tool:</b> a free service that helps you understand your Azure bill, manage your account and your subscription, monitor and control Azure spending, and optimize resource use.
+  - Features include: reporting, data enrichment, budgets, alerting, and recommendations 
+  - use to control spending 
 • describe the purpose of tags
+  
 ### Describe Features and Tools in Azure for Governance and Compliance
 - <b>Resource Locks:</b> prevent resources from being accidentally deleted or changed.
   - You can apply locks to a subscription, resource group, or an individual resource.
