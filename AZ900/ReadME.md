@@ -1,4 +1,4 @@
-# AZ-900: Microsoft Azure Fundamentals Notes 
+# AZ-900: Microsoft Azure Fundamentals Exam Preparation Resources 
 
 1. Skills Measured: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3VwUY 
 2. Practice Questions: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWSRk3
