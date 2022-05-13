@@ -15,13 +15,16 @@ Study Guide / Notes created using: https://docs.microsoft.com/en-us/users/231106
 - Cloud Pricing Models: 
 
 ### Describe the Benefits of Using Cloud Services
-Describe the benefits of using cloud services
-- High Availability: depending on the SLA that you choose, your cloud-based applications can provide a continuous user experience with no apparent downtime, even when things go wrong.
-- Scalability: applications in the cloud can scale vertically or horizontally.
-  - Scale vertically to increase compute capacity by adding RAM or CPUs to a VM
-  - Scaling horizontally increase compute capacity by adding instances of resources, such as VMs, to the configuration.
-- -
-• describe the benefits of high availability and scalability in the cloud
+- Benefits of Cloud Computing 
+  - <b>High Availability:</b> depending on the SLA that you choose, your cloud-based applications can provide a continuous user experience with no apparent downtime, even when things go wrong.
+  - <b>Scalability:</b> applications in the cloud can scale vertically or horizontally.
+    - Scale vertically to increase compute capacity by adding RAM or CPUs to a VM
+    - Scaling horizontally increase compute capacity by adding instances of resources, such as VMs, to the configuration.
+  - <b>Elasticity:</b> you can configure cloud-based applications to take advantage of autoscaling, so your applications always have the resources they need. 
+  - <b>Agility:</b> deploy and configure cloud-based resources quickly as you application requirements change. 
+  - <b>Geo-distribution:</b> you can deploy apps and data to regional datacenters around the globe, thereby ensuring that your customers always have the best performance in their region. 
+  - <b>Disaster Recovery:</b> by taking advantage of cloud-based backup services, data replication, and geo-distribution, you can deploy your applications with the confidence that comes from knowing that your data is safe in the event of a disaster.   
+- Benefits 
 • describe the benefits of reliability and predictability in the cloud
 • describe the benefits of security and governance in the cloud
 • describe the benefits of manageability in the cloud
@@ -94,6 +97,15 @@ File Sync
 • describe Azure role-based access control (RBAC)
 • describe the concept of Zero Trust
 • describe the purpose of the defense in depth model
+- A <b>Defense-in-Depth</b> strategy uses a series of mechanisms to slow the advance of an attack that aims at acquiring unauthorized access to data.  The objective is to protect information and prevent it from being stolen by those who aren't authorized to access it.  
+  - Each layer provides protection so that if one layer is breached, a subsequent layer is already in place to prevent further exposure.  This approach removes reliance on any single layer of protection.  It slows down an attack and provides alert telemetry that security teams can act upon, either automatically or manually.  
+    - Physical Security 
+    - Identity and Access
+    - Perimeter 
+    - Network
+    - Compute 
+    - Application
+    - Data 
 • Describe the purpose of Microsoft Defender for Cloud
 ## Describe Azure Management and Governance
 
@@ -115,11 +127,14 @@ File Sync
 • describe the purpose of tags
 ### Describe Features and Tools in Azure for Governance and Compliance
 - <b>Resource Locks:</b> prevent resources from being accidentally deleted or changed.
+  - You can apply locks to a subscription, resource group, or an individual resource.
+    - <b>CanNotDelete</b> - means authorized people can still read and mofiy a resource, but they can't delete the resource without first removing the lock
+    - <b>ReadOnly</b> - means authorized people can read a resource, but they can't delete or change the resource.
 - <b>Azure Policy:</b> a service in Azure that enables you to create, assign, and manage policies that control or audit your resources. 
 - <b>Azure Blueprints:</b> enables you to define a repeatable set of governance tools and standard Azure resources that your organization requires. 
+  - Azure Blueprints orchestrates the deployment of various resource templates and artifacts such as role assignments, policy assignments, Azure Resource Manager templates, and resource groups.  
 • describe the purpose of Azure Blueprints
 • describe the purpose of Azure Policy
-• describe the purpose of resource locks
 • describe the purpose of the Service Trust Portal
 
 
@@ -134,8 +149,12 @@ templates)
 
 ### Describe Monitoring Tools in Azure 
 
-- describe the purpose of Azure Advisor
-• describe Azure Service Health
 • describe Azure Monitor, including Log Analytics, Azure Monitor alerts, and Application
 Insights
 
+- 3 Primary Azure Monitoring Offerings, each of which is aimed at a specific audience and use case and provides a diverse set of tools, services, programmatic APIs, and more. 
+  -  <b>Azure Advisor:</b> evaulates your Azure resources and makes recommendations to help improve reliability, security, and performanc,e achieve operational excellence, and reduce costs.  Designed to help save you time on cloud optimization.  The recommendation service includes suggested actions you can take right away, postpone, or dismiss.  
+      - Recommendations are divided into 5 categories: Reliability, Security, Performance, Cost, Operational Excellence 
+      - Used to optimize cost 
+  - <b>Azure Monitor:</b> a platform for collecting, analyzing, visualizing, and potentially taking action based on the metric and logging data from your entire Azure and on-prem environment.  
+  - <b>Azure Service Health:</b> provides a personalized view of the health of the Azure services, regions, and resources you rely on.  Helps you keep an eye on several event types (i.e. service issues, planned maintenancees, health advisories, etc) 
