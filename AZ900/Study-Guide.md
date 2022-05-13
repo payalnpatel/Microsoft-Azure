@@ -4,7 +4,7 @@ Study Guide / Notes created using: https://docs.microsoft.com/en-us/users/231106
 ## Describe Cloud Concepts
 
 ### Describe Cloud Computing
-- <b>Cloud Computing:</b> The delivery of computing services over the internet (which is otherwise known as the cloud).These services include servers, storage, databases, networking, software, analytics, and intelligence.  Cloud computing offers faster innovation, flexible resources, and economies of scale.  
+- <b>Cloud Computing:</b> The delivery of computing services over the internet (which is otherwise known as the cloud).  These services include servers, storage, databases, networking, software, analytics, and intelligence.  Cloud computing offers faster innovation, flexible resources, and economies of scale.  
 - <b>Shared Responsibility Model:</b> 
 - Cloud Models (Public, Private, Hybrid)
   - <b>Public Cloud:</b> services are offered over the public internet and available to anyone who wants to purchase them.  Cloud resources, such as servers and storage, are owned and operated by a third-party cloud service provider, and delivered over the internet.
@@ -139,22 +139,27 @@ File Sync
 
 
 ### Describe Features and Tools for Managing and Deploying Azure Resources 
-
-
-• describe the Azure portal
+- Azure Portal: a web-based user interface you can access virtually ever feature of Azure from.
+- Azure PowerShell: a shell which developers and DevOps and IT Professionals can executed commands called cmdlets from.  These commands call the Azure REST API to perform every possible management task in Azure.  Cmdlets can be executed independently or combined into a script file and executed together to orchestrate the route setup/teardown/maintenance of single/multiple resources / the deployment of an entire infrastructure from imperative code 
+  - likely to prefer PowerShell if you come from a Windows background 
+- Azure CLI: command line interface - an executable program with which a developer, DevOps professional, or IT professional can execute commands in Bash 
+  - likely to prefer Azure CLI if you come from a Linux background 
+- ARM Templates: Azure Resource Manager templates - describe the resources you want to use in a declarative JSON format.  ARM template is verified before any code is executed to ensure that the resources will be created and connected correctly.  The template then orchestrates the creation of those resources in parallel.  
+  - Can include both PowerShell and/or Azure CLI Scripts 
+  - Helpful for repeatable deployments done in a consistent manner 
+- For one-off scenarios, you may prefer more agile tools like PowerShell, Azure CLI scripts, or the Azure Portal.
+- Azure Mobile App - provides iOS and Android access to your Azure resources when you're away from your computer.
 - describe Azure Cloud Shell, including Azure CLI and Azure PowerShell
 • describe the purpose of Azure Arc
 • describe Azure Resource Manager and Azure Resource Manager templates (ARM
 templates)
 
 ### Describe Monitoring Tools in Azure 
-
-• describe Azure Monitor, including Log Analytics, Azure Monitor alerts, and Application
-Insights
-
 - 3 Primary Azure Monitoring Offerings, each of which is aimed at a specific audience and use case and provides a diverse set of tools, services, programmatic APIs, and more. 
   -  <b>Azure Advisor:</b> evaulates your Azure resources and makes recommendations to help improve reliability, security, and performanc,e achieve operational excellence, and reduce costs.  Designed to help save you time on cloud optimization.  The recommendation service includes suggested actions you can take right away, postpone, or dismiss.  
       - Recommendations are divided into 5 categories: Reliability, Security, Performance, Cost, Operational Excellence 
       - Used to optimize cost 
   - <b>Azure Monitor:</b> a platform for collecting, analyzing, visualizing, and potentially taking action based on the metric and logging data from your entire Azure and on-prem environment.  
+    - Use if you want to keep track of performance or issues related to a specific VM, to set upalerts for key events that are related to specific resources, when you want to measure custom events alongside telemetry data.
+    - platform used by application insights   
   - <b>Azure Service Health:</b> provides a personalized view of the health of the Azure services, regions, and resources you rely on.  Helps you keep an eye on several event types (i.e. service issues, planned maintenancees, health advisories, etc) 
