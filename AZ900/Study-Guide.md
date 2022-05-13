@@ -99,6 +99,7 @@ File Sync
 
 
 • describe directory services in Azure, including Azure Active Directory (Azure AD) and Azure Active Directory Domain Services (Azure AD DS)
+
 • describe authentication methods in Azure, including single sign-on (SSO), multifactor authentication, and passwordless
 - <b>Single Sign-On (SSO):</b> SSO enables a user to sign in one time and use that credential to access multiple resources and applications from different providers. 
 - <b>Multifactor Authentication (MFA):</b> MFA is a process where a user is prompted during the sign-in process for an additional form of identification.  Examples include a code from their mobile phone or a fingerprint scan. 
@@ -107,20 +108,40 @@ File Sync
     - <b>Something the user <i>has</i></b> - might be a code that's sent to the user's mobile phone
     - <b>Something the user <i>is</i></b> - typically some sort of biometric property such as a fingerprint or face scan 
   - MFA increase identity security by limiting the impact of credential exposure. 
+
 descibe external identities and guest access in Azure
-• describe Azure AD Conditional Access
+
+- <b>Conditional Access:</b> a tool that Azure AD uses to allow (or deny) access to resources based on identity signals, such as a user's location.
+  - These signals include who the user is, where the user is, and what device the user is requesting access from. 
+  - Provides a more granular MFA experience for users - i.e. user might not be challenged for a second authentication factor if they are a known location. 
+  - During sign-in, Conditional Access collects signals from the user, makes decisions based on those signals, and then enforces that decision by allowing or denying the access request or challenging for a MFA response. 
 • describe Azure role-based access control (RBAC)
 • describe the concept of Zero Trust
 • describe the purpose of the defense in depth model
 - A <b>Defense-in-Depth</b> strategy uses a series of mechanisms to slow the advance of an attack that aims at acquiring unauthorized access to data.  The objective is to protect information and prevent it from being stolen by those who aren't authorized to access it.  
   - Each layer provides protection so that if one layer is breached, a subsequent layer is already in place to prevent further exposure.  This approach removes reliance on any single layer of protection.  It slows down an attack and provides alert telemetry that security teams can act upon, either automatically or manually.  
-    - Physical Security 
-    - Identity and Access
-    - Perimeter 
-    - Network
-    - Compute 
-    - Application
-    - Data 
+    - Physical Security - the first line of defense to protect computing hardware in the datacenter 
+      - Physically securing access to buildings and controlling access to computing hardware within the datacenter 
+    - Identity and Access - controls access to infrastructure and change control 
+      - control access to infrastructure and change control
+      - use SSO and MFA
+      - audit events and changes 
+    - Perimeter - uses distributed denial of service (DDoS) protection to filter larger-scale attacks before they can cause a denial of service for users 
+      - use DDoS protection to filter large-scale attacks before they can affect the availability of a system for users
+      - use perimeter firewalls to identify and alert malicious attacks against your network 
+      - at the network perimeter it's about protecting network-based attacks against your resources 
+    - Network - limits communications between resources through segmentation and access controls 
+      - limit communication between resources
+      - deny by default
+      - restrict inbound internet access and limit outbound access where appropriate 
+      - implement secure connectivity to on-premises networks 
+      - at this layer the focus is on limiting network connectivity across all your resource to allow only what's required 
+    - Compute - secure access to VMs 
+      - implement endpoint protection on devices and keep systems patches and current 
+    - Application - helps ensure that apps are secure and free of security vulnerabilities 
+      - store sensitive app secrets in a secure storage medium
+      - make security a design requirement for all application development
+    - Data - controls access to business and customer data that you need to protect
 • Describe the purpose of Microsoft Defender for Cloud
 ## Describe Azure Management and Governance
 
