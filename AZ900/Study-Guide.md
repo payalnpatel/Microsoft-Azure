@@ -95,10 +95,15 @@ File Sync
     - It establishes the level of access that an authenticated user has. 
 
 
+- <b>Azure Active Directory (Azure AD)</b>: a cloud-based identity and access management service.  Azure AD enables an organization to control access to applications and resources based on its business requirements.  
+  - Azure AD provides services such as
+    - <b>Authentication</b> - includes verifying identity to access applications and reousrces.  Also includes providing functionaliy such as self-service password reset, MFA, a custom list of banned passwords, and smart lockout services. 
+    - <b>Single Sign-On (SSO)</b> - SSO enables you to remember only one username and one password to access multiple applications.  A single identity is tied to a user, which simplifies the security model.  As users change roles or leave an organization, access modifications are tied to that identity, which greatly reduces the effort needed to change or disable accounts. 
+    - <b>Application Management</b>
+    - <b>Device Management</b> 
+  - <b>Azure AD Connect</b> - synchronizes user identities between on-premises Active Directory and Azure AD. 
+- Azure Active Directory Domain Services (Azure AD DS) 
 
-• describe directory services in Azure, including Azure Active Directory (Azure AD) and Azure Active Directory Domain Services (Azure AD DS)
-
-• describe authentication methods in Azure, including single sign-on (SSO), multifactor authentication, and passwordless
 - <b>Single Sign-On (SSO):</b> SSO enables a user to sign in one time and use that credential to access multiple resources and applications from different providers. 
 - <b>Multifactor Authentication (MFA):</b> MFA is a process where a user is prompted during the sign-in process for an additional form of identification.  Examples include a code from their mobile phone or a fingerprint scan. 
   - MFA provides additional security for your identities by requiring two or more elements to fully authenicate. These elements fall into 3 categories:
@@ -106,7 +111,8 @@ File Sync
     - <b>Something the user <i>has</i></b> - might be a code that's sent to the user's mobile phone
     - <b>Something the user <i>is</i></b> - typically some sort of biometric property such as a fingerprint or face scan 
   - MFA increase identity security by limiting the impact of credential exposure. 
-
+- Passwordless 
+-
 descibe external identities and guest access in Azure
 
 - <b>Conditional Access:</b> a tool that Azure AD uses to allow (or deny) access to resources based on identity signals, such as a user's location.
@@ -114,8 +120,17 @@ descibe external identities and guest access in Azure
   - Provides a more granular MFA experience for users - i.e. user might not be challenged for a second authentication factor if they are a known location. 
   - During sign-in, Conditional Access collects signals from the user, makes decisions based on those signals, and then enforces that decision by allowing or denying the access request or challenging for a MFA response. 
 • describe Azure role-based access control (RBAC)
-• describe the concept of Zero Trust
-• describe the purpose of the defense in depth model
+- <b>Azure Role-Based Access Control (RBAC):</b> enables you to create roles that define access permissions
+  - Azure provides built-in roles that define common rules for cloud resources.  You can also define your own roles.  Each role has an associated set of access permissions that relate to that role.  When you assign individuals or groups to one or more roles, they receive all associated access permissions. 
+  - RBAC is applied to a scope (which is a resource or set of resources that this access applies to)
+  - <b>Role</b> - reader, resource-specific, custom, contributor, owner
+  - <b>Scope</b> - management group (a collection of subscriptions), subscription, resource group, resource 
+  - RBAC uses an allow model - RBAC  allows you to perform certain actions when you're assigned a role 
+  - You can apply Azure RBAC to an individual person or group.  Can also apply to other special identity types, such as service principals and managed identities. 
+  - You can manage access permissions on the Access control (IAM) pane in the Azure portal. 
+ 
+- <b>Zero Trust</b> 
+
 - A <b>Defense-in-Depth</b> strategy uses a series of mechanisms to slow the advance of an attack that aims at acquiring unauthorized access to data.  The objective is to protect information and prevent it from being stolen by those who aren't authorized to access it.  
   - Each layer provides protection so that if one layer is breached, a subsequent layer is already in place to prevent further exposure.  This approach removes reliance on any single layer of protection.  It slows down an attack and provides alert telemetry that security teams can act upon, either automatically or manually.  
     - <b>Physical Security</b> - the first line of defense to protect computing hardware in the datacenter 
@@ -145,19 +160,26 @@ descibe external identities and guest access in Azure
 
 ### Describe Cost Management in Azure
 - Factors that affect cost
-  - Resource Type
-  - Usage Meters
-  - Resource Usage 
-  - Azure Subscription Types
-  - Azure Marketplace 
-  - Location
-  - Zones for Billing Network Traffic 
-- <b>Pricing Calculator:</b> use to determine which Azure services best fit your budget. helps determine cost --
+  -<b> Resource Type</b> - a number of factors influence the cost of Azure resources. They depend on the type of resource or how you customize it. 
+    - i.e. type (blob/table storage), performance tier (standard vs. premium), access tier (hot, cool, archive), etc. 
+  - <b>Usage Meters:</b> When you provision a resource, Azure creates meters to track that resource's usage. These meters are used to generate a usage record that's later used to help calculate your bill. Each meter tracks a specific type of usage. 
+  - <b>Resource Usage:</b> charged based on what you use.
+    - Deallocating a VM means VM is no longer running, but the associated hard disks and data are still kept in Azure. (billed for disk storage, but removes compute cost and VM's IP address cost during this time) -- This is a way to minimize costs. 
+  - <b>Azure Subscription Types:</b> some Azure subscription types also include usage allowances, which affect costs. 
+  - <b>Azure Marketplace:</b> can also purchase Azure-based solutions and services from third-party vendors through Azure Marketplace. 
+  - <b>Location:</b> when you provision a resource in Azure, you need to define the location (i.e. Azure region) of where it will be deployed. Different regions can have different associated prices. Geographic regions can affect where your network traffic flows, thus network traffic is a cost influence to consider as well. 
+  - <b>Zones for Billing Network Traffic:</b> billing zones are a factor in determining the cost of some Azure services. 
+    - <b>Bandwidth</b>  - refers to data moving in and out of Azure datacenters. Some inbound data transfers (data going into Azure datacenters) are free.  For outbound data transfers, data transfer pricing is based on zones. 
+  - <b>Zone</b> - a zone is a geographical grouping of Azure regions for billing purposes. 
+- <b>Pricing Calculator:</b> use to determine which Azure services best fit your budget. helps determine cost / estimate workload cost 
+
 - <b>Total Cost of Ownership (TCO) Calculator:</b> helps estimate the cost savings of operating your solution on Azure over time compared to operating in your on-prem datacenter. 
 - <b>Azure Cost Management and Billing Tool:</b> a free service that helps you understand your Azure bill, manage your account and your subscription, monitor and control Azure spending, and optimize resource use.
   - Features include: reporting, data enrichment, budgets, alerting, and recommendations 
   - use to control spending 
-• describe the purpose of tags
+ - <b>Resource tags:</b>  a way to organize your resources.  Tags provide extra information, or metadata, about your resources. 
+  - Tags also help you manage costs associated with the different groups of Azure products/resources. 
+
   
 ### Describe Features and Tools in Azure for Governance and Compliance
 - <b>Resource Locks:</b> prevent resources from being accidentally deleted or changed.
@@ -190,7 +212,7 @@ templates)
 
 ### Describe Monitoring Tools in Azure 
 - 3 Primary Azure Monitoring Offerings, each of which is aimed at a specific audience and use case and provides a diverse set of tools, services, programmatic APIs, and more. 
-  -  <b>Azure Advisor:</b> evaulates your Azure resources and makes recommendations to help improve reliability, security, and performanc,e achieve operational excellence, and reduce costs.  Designed to help save you time on cloud optimization.  The recommendation service includes suggested actions you can take right away, postpone, or dismiss.  
+  -  <b>Azure Advisor:</b> evaulates your Azure resources and makes recommendations to help improve reliability, security, and performance, achieve operational excellence, and reduce costs.  Designed to help save you time on cloud optimization.  The recommendation service includes suggested actions you can take right away, postpone, or dismiss.  
       - Recommendations are divided into 5 categories: Reliability, Security, Performance, Cost, Operational Excellence 
       - Used to optimize cost 
   - <b>Azure Monitor:</b> a platform for collecting, analyzing, visualizing, and potentially taking action based on the metric and logging data from your entire Azure and on-prem environment.  
