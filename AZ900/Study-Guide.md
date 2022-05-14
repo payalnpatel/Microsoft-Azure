@@ -63,13 +63,34 @@ Describe cloud service types
 ### Describe Azure Compute and Networking Services
 
 compare compute types, including container instances, virtual machines (VMs), and functions
+
+- Serverless Computing: the abstraction of servers, infrastructure, and Operating System.  Azure takes care of managing the server infrastructure and the allocation and deallocation of resources based on demand.  Scaling and performance are handled automatically.  No infrastructure management. Scalability.  Only pay for what you use.
+  - Azure has 2 implementations of Serverless Computing:
+    - Azure Functions - functions can execute code in almost any modern language 
+    - Azure Logic Apps - logic apps are designed in a web-based designed and can execute logic triggered by Azure services without writing any code, 
+
+  - Azure Functions: functions are commonly used when you need to perform work in response to an event (often via a REST request), timer, or message, from another Azure service, and when that work can be completed quickly (within seconds or less)
+    - Functions scale automatically based on demand 
+    - Functions can be statelsess or stateful (stateful passes context through the function to track prior activity, stateless is default) 
+  - Azure Logic Apps 
+
 • describe VM options, including Azure Virtual Machines, Azure Virtual Machine Scale Sets, availability sets, and Azure Virtual Desktop
+
+- Azure Virtual Desktop: a desktop and application virtualization service that runs on the cloud
+  - enables your users to use a cloud-hosted version of Windows from any location
+  - works across devices - Windows, Mac, Linux, iOS, etc.
+  - Simplified Management
+  - Performance Management
+  - Multi-session Windows 10 Deployment 
 • describe resources required for virtual machines
 • describe application hosting options, including the Web Apps feature of Azure App
 Service, containers, and virtual machines
 • describe virtual networking, including the purpose of Azure Virtual Networks, Azure
 virtual subnets, peering, Azure DNS, Azure VPN Gateway, and Azure ExpressRoute
 • define public and private endpoints
+
+- 
+
 ### Describe Azure Storage Services 
 - Azure Blob Storage, Azure Disk Storage, Azure File 
 - <b>Azure Storage Tiers</b> - Azure provides several access tiers, which you can use to balance your storage costs with your access needs. Only hot and cool access tiers can be set at the account level.  Hot, cool, and archive access tiers can be set at the blob level (during upload or after upload) 
@@ -172,17 +193,20 @@ descibe external identities and guest access in Azure
     - <b>Bandwidth</b>  - refers to data moving in and out of Azure datacenters. Some inbound data transfers (data going into Azure datacenters) are free.  For outbound data transfers, data transfer pricing is based on zones. 
   - <b>Zone</b> - a zone is a geographical grouping of Azure regions for billing purposes. 
 - <b>Pricing Calculator:</b> use to determine which Azure services best fit your budget. helps determine cost / estimate workload cost
- <img width="847" alt="Screen Shot 2022-05-14 at 4 41 58 PM" src="https://user-images.githubusercontent.com/35014868/168447527-25fdffa9-bd8e-47ed-9e6a-1c0c777b9daf.png">
-
+   <img width="847" alt="Screen Shot 2022-05-14 at 4 41 58 PM" src="https://user-images.githubusercontent.com/35014868/168447527-25fdffa9-bd8e-47ed-9e6a-1c0c777b9daf.png">
+  Image from: https://docs.microsoft.com/en-us/learn/modules/plan-manage-azure-costs/4-purchase-azure-services
 
 - <b>Total Cost of Ownership (TCO) Calculator:</b> helps estimate the cost savings of operating your solution on Azure over time compared to operating in your on-prem datacenter.
-![image](https://user-images.githubusercontent.com/35014868/168447569-9e5216f5-8928-400f-85cb-2351d60c7dab.png)
+  ![image](https://user-images.githubusercontent.com/35014868/168447569-9e5216f5-8928-400f-85cb-2351d60c7dab.png)
+  Image from: https://user-images.githubusercontent.com/35014868/168447569-9e5216f5-8928-400f-85cb-2351d60c7dab.png
+  
 -[<b>Azure Cost Management and Billing Tool:</b>](https://azure.microsoft.com/en-us/services/cost-management/#overview) a free service that helps you understand your Azure bill, manage your account and your subscription, monitor and control Azure spending, and optimize resource use.
   - Features include: reporting, data enrichment, budgets, alerting, and recommendations 
   - use to control spending 
     <img width="572" alt="Screen Shot 2022-05-14 at 4 51 18 PM" src="https://user-images.githubusercontent.com/35014868/168447762-cca1c904-8d32-4c8d-b33c-2ea4603fb077.png">
+    
+    Image from: https://azure.microsoft.com/en-us/services/cost-management/#overview
 
- 
  - <b>Resource tags:</b>  a way to organize your resources.  Tags provide extra information, or metadata, about your resources. 
   - Tags also help you manage costs associated with the different groups of Azure products/resources. 
 
