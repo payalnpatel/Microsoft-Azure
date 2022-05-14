@@ -171,12 +171,18 @@ descibe external identities and guest access in Azure
   - <b>Zones for Billing Network Traffic:</b> billing zones are a factor in determining the cost of some Azure services. 
     - <b>Bandwidth</b>  - refers to data moving in and out of Azure datacenters. Some inbound data transfers (data going into Azure datacenters) are free.  For outbound data transfers, data transfer pricing is based on zones. 
   - <b>Zone</b> - a zone is a geographical grouping of Azure regions for billing purposes. 
-- <b>Pricing Calculator:</b> use to determine which Azure services best fit your budget. helps determine cost / estimate workload cost 
+- <b>Pricing Calculator:</b> use to determine which Azure services best fit your budget. helps determine cost / estimate workload cost
+ <img width="847" alt="Screen Shot 2022-05-14 at 4 41 58 PM" src="https://user-images.githubusercontent.com/35014868/168447527-25fdffa9-bd8e-47ed-9e6a-1c0c777b9daf.png">
 
-- <b>Total Cost of Ownership (TCO) Calculator:</b> helps estimate the cost savings of operating your solution on Azure over time compared to operating in your on-prem datacenter. 
-- <b>Azure Cost Management and Billing Tool:</b> a free service that helps you understand your Azure bill, manage your account and your subscription, monitor and control Azure spending, and optimize resource use.
+
+- <b>Total Cost of Ownership (TCO) Calculator:</b> helps estimate the cost savings of operating your solution on Azure over time compared to operating in your on-prem datacenter.
+![image](https://user-images.githubusercontent.com/35014868/168447569-9e5216f5-8928-400f-85cb-2351d60c7dab.png)
+-[<b>Azure Cost Management and Billing Tool:</b>](https://azure.microsoft.com/en-us/services/cost-management/#overview) a free service that helps you understand your Azure bill, manage your account and your subscription, monitor and control Azure spending, and optimize resource use.
   - Features include: reporting, data enrichment, budgets, alerting, and recommendations 
   - use to control spending 
+    <img width="572" alt="Screen Shot 2022-05-14 at 4 51 18 PM" src="https://user-images.githubusercontent.com/35014868/168447762-cca1c904-8d32-4c8d-b33c-2ea4603fb077.png">
+
+ 
  - <b>Resource tags:</b>  a way to organize your resources.  Tags provide extra information, or metadata, about your resources. 
   - Tags also help you manage costs associated with the different groups of Azure products/resources. 
 
