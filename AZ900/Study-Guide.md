@@ -34,9 +34,6 @@ Study Guide / Notes created using: https://docs.microsoft.com/en-us/users/231106
   - <b>Geo-distribution:</b> you can deploy apps and data to regional datacenters around the globe, thereby ensuring that your customers always have the best performance in their region. 
   - <b>Disaster Recovery:</b> by taking advantage of cloud-based backup services, data replication, and geo-distribution, you can deploy your applications with the confidence that comes from knowing that your data is safe in the event of a disaster.   
 - Benefits 
-• describe the benefits of reliability and predictability in the cloud
-• describe the benefits of security and governance in the cloud
-• describe the benefits of manageability in the cloud
 
 ### Describe Cloud Service Types
 - <b>Cloud Service Models:</b> define the different levels of shared responsibility that a cloud provider and cloud tenant are responsible for. 
@@ -50,9 +47,6 @@ Study Guide / Notes created using: https://docs.microsoft.com/en-us/users/231106
 Describe cloud service types
 ![image](https://user-images.githubusercontent.com/35014868/168485305-618db036-6304-4c3f-aaaf-2b11d912fa57.png)
 ![image](https://user-images.githubusercontent.com/35014868/168485350-ea661192-08b6-4ae2-8d66-df8f76ec92d7.png)
-
-
-• identify appropriate use cases for each cloud service (IaaS, PaaS, SaaS)
 
 ## Describe Azure Architecture and Services
 
@@ -82,11 +76,7 @@ Describe cloud service types
     - each management group and subscription can support only one parent 
     - each management group can have many children 
     - provides a level of scope above subscriptions.  
-
-
-• describe Azure regional, regional pairs, and sovereign regions
-• describe Azure datacenters
-
+- <b>Sovereign Regions</b>
 
 
 ### Describe Azure Compute and Networking Services
@@ -122,7 +112,6 @@ Describe cloud service types
   - Simplified Management
   - Performance Management
   - Multi-session Windows 10 Deployment 
-
 - <b>Azure Virtual Network:</b> enables Azure resources, such as VMs, web apps, and databases, to communicate with each other, with users on the internet, and with your on-premise client computers.  Can think of Azure network as an extension of your on-prem network with resources that link to other Azure resources.
   - Azure Virtual Networks provide:
     - <b>Isolation and Segmentation</b>
@@ -159,21 +148,62 @@ Describe cloud service types
   - <b>Firewall</b> - you can enable or disable Azure firewall. A managed cloud-based network security service that protects your Azure Virtual Network resources.
   - <b>Network security group</b> - have security rules that enable you to filter the type of network traffic that can flow in and out of virtual network subnets and network interfaces.  You can create the network security group separately.  then you associate it with each subnet in the virtual network. 
   - <b>Route table</b> - Azure automatically creates a route table for each subnet within an Azure virtual network and adds system default routes to the table.  You can add custom route tables to modify traffic between subnets and virtual networks 
+- <b>VPNs</b> use an encrypted tunnel within another network.  They're typically deployed to connect two or more trusted private networks to one another over an untrusted network (typically the public internet).  Traffic is encrypted while traveling over the untrusted network to prevent eavesdropping or other attacks 
+- <b>VPN Gateway: </b> a type of virtual network gateway.  Azure VPN gateway instances are deployed in a dedicated subnet of the virutal network and enable the following 
+   - connect on-prem datacenters to virtual networks through a <b>site-to-site connection</b>
+   - connect individual devices to virtual networks through a <b>point-to-site connection</b>
+   - connect virtual networks to other virtual networks through a <b>network-to-network connection</b>
+   - all data transfer is encrypted inside a private tunnel as it crosses the internet.  You can deploy only one VPN gateway in each virtual network, but you can use one gateway to connect to multiple locations, which includes other virtual networks or on-premises datacenters. 
+   - when you deploy a VPN gateway, you specify the VPN type -- either policy-based or route-based.  The main difference between these two types of VPN gatewways is how traffic to be encrypted is specified.  In Azure, both types of VPN gateways use a pre-shared key as the only method of authentciation.  Both types rely on Internet Key Exchange (IKE) in either version 1 or version 2 and Internet Protocol Security (PSec).  IKE is used to set up security association (an agreement of encryption) between two endpoints.  This association is then passed to the Ipsec suite, which encrypts and decrypts data packets encapsulated in the VPN tunnel.
+      - <b>Policy-Based VPNs</b>
+         -  Policy-based VPNs specify statically the IP address of packets that should be encrypted through each tunnel. This type of device evaulates every data packet against those sets of IP addresses to choose the tunnel where that packet is going to be sent through 
+         -  Support for IKEv1 only 
+         -  use of static routing, where combinations of address prefixes from both networks control how traffic is encrypted and decrypted through the VPN tunnel.  the source and destination of the tunneled networks are declared in the policy and don't need to be declared in the routing tables. 
+         -  policy-based VPNs must be used in specific scenarios that require them, such as compatibility with legacy on-premises VPN devices 
+      - <b>Route-Based VPNs </b>
+         - Ipsec tunnels are modeled as a network interface or virtual tunnel interface 
+         - IP routing (either static routes or dynamic routing protocols) decides which one of these tunnel interfaces to use when sending each packet.  
+         - Route-based VPNs are the preferred connection method for on-premise devices.  They're more resilient to topology changes such as the creation of new subnets. 
+         - use a route-based VPN gateway if you need any of the following:
+            - connections between virtual networks 
+            - point-to-site connections
+            - multi-site connections 
+            - coexistence with an Azure ExpressRoute gateway 
+         - supports IKEv2
+         - uses any-to-any (wildcard) traffic selectors
+         - can use dynamic routing protocols, where routing/forwarding tables direct traffic to different Ipsec tunnels 
+- Required Azure Resources to Deploy VPN Gateways
+   - Virtual Network - deploy a virtual network with enough space for the add'l subnet that you'll need for the VPN gateway.  the address space for this virtual network must not overlap with the on-prem network that you'll be connecting to.  you can deploy only one VPN gateway within a virtual network. 
+   - GatewaySubnet - deploy a subnet called GatewaySubnet for the VPN gateway. 
+   - Public IP address - create a basic SKU dynamic public IP address if you're using a non-zone-aware gateway.  This address provides a public-routeable IP address as the target for your on-premises VPN device.  This IP address is dynamic but won't change unless you delete or re-create the VPN gateway. 
+   - local network gateway - create a local network gateway to define the on-prem network's configuration, such as where the VPN gateway will connect and what it will connect to.  this configuration includes the on-premises VPN device's IPv4 address and the on-prem routable networks. 
+   - virtual network gateway - create this to route traffic between the virtual network and the on-prem datacenter or other virtual networks.  the virtual network gateway can be either a VPN or ExpressRoute. 
+   - connection - create a connection to create a logical connection between the VPN gateway and the local network gateway. 
+      - the connection is made to the on-prem VPN devices IPv4 address as defined by the local network gateway
+      - the connection is made from the virtual network gateway and its associated public IP address
+      - you can create multiple connections 
+- Required On-Prem Resources to Deploy VPN Gateways
+   - A VPN device that supports policy-based or route-based VPN gateways
+   - a public-facing (internet-routable) IPv4 address 
+- <b>Azure ExpressRoute:</b> lets you extend your on-premises network into the Microsoft Cloud over a private connection with the help of a connectivity provider. 
+   - ExpressRoute does provide private connectivity, but it isn't encrypted. 
+- <b>Public Endpoint:</b> public endpoint for a managed instance enables data access to your managed instance from outside the virtual network.
+- <b>Private Endpoint</b> a network interface that uses a private IP address from your virtual network. This network interface connects you privately and securely to a service that's powered by Azure Private Link. By enabling a private endpoint, you're bringing the service into your virtual network
 
-
-• describe resources required for virtual machines
-• describe application hosting options, including the Web Apps feature of Azure App
-Service, containers, and virtual machines
-• describe virtual networking, including the purpose of Azure Virtual Networks, Azure
-virtual subnets, peering, Azure DNS, Azure VPN Gateway, and Azure ExpressRoute
-• define public and private endpoints
-
-- 
 
 ### Describe Azure Storage Services 
 - Azure provides 4 main types of storage services
   - <b>Azure Blob storage:</b> storage service for very large object, such as video files or bitmaps
+   - Object storage solution for the cloud. Azure Blob Storage is unstructured, meaning that there are no restrictions on the kinds of data it can hold.  Blob storage can manage thousands of simultaneous upoads, massive amounts of video data, constantly growing log files, and can be reached from anywhere with an internet connection. 
+   - Blobs aren't limited to file formats 
+   - Blob storage is ideal for: serving images or documents directly to a browser, storing files for distributed access, streaming video or audio, storing data for backup and restore/disaster recovery/archiving, storing data for analysis by an on-prem or azure-hosted service, storing up to 8 TB of data for VMs 
+   - Can store blob in containers, which helps you organize your blobs depending on your business needs. 
   - <b>Azure File storage:</b> file shares that can be accessed and managed like a file server
+   - Offers fully managed file shares in the cloud that are accessible via the industry standard server message block and network file system protocol. 
+   - Azure file shares can be mounted concurrently by cloud or on-prem deployments of Windows, Linux, and macOS. 
+   - Use Azure File shares for the following - many on-prem apps use file shares (Azure files makes it easier to migrate those apps that share data to Azure), store configuration files on a file share and access them from multiple VMs, write data to a file share and process/analyze the data later. might want to do this with diagnostic logs, metrics, and crash dumps. 
+   - Azure files ensures the data is encrypted at rest, and the SMB protocol ensures the data is encrypted in transit. 
+   - Can access Azure files from anywhere in the world with a URL that points to the file.  can also use a shared access signature (SAS) token to allow access to a private asset for a specific period of time.  
   - <b>Azure Queue storage:</b> a data store for queing and reliably delivering messages between applications.
   - <b>Azure Table storage</b> - table storage is a service that stores non-relational structured data (also known as structured NoSQL data) in the cloud, providing a key/attribute store with a schemaless design. 
   - These services share several common characteristics:
@@ -182,19 +212,22 @@ virtual subnets, peering, Azure DNS, Azure VPN Gateway, and Azure ExpressRoute
     - scalable with virtually unlimited storage 
     - managed, handling maintenance and any critical problems for you
     - accessible from anywhere in the world over HTTP or HTTPS
+- To use Azure storage, you need to create an Azure storage account to store your data objects. 
+- Azure VMs use Azure Disk Storage to store virtual disks; however, you can't use Azure Disk Storage to sstore a disk outside of a VM. 
+   - <b>Disk storage</b> provides disks for Azure VMs
+   - Disks come in many different sizes and performance levels -- from SSDs, to tradditional HDDs with varying performance tiers.  You can use Standard SSD and HDD disks for less critical workloads, premium SSD disks for mission-criticial production apps, and ultra disks for data-intensive workloads such as SAP Hana, top tier databases, and transaction-heavy workloads. 
 - <b>Azure Storage Tiers</b> - Azure provides several access tiers, which you can use to balance your storage costs with your access needs. Only hot and cool access tiers can be set at the account level.  Hot, cool, and archive access tiers can be set at the blob level (during upload or after upload) 
   - <b>Hot Access Tier:</b> optimized for storing data that is accessed frequently (i.e. images on your website) 
   - <b>Cool Access Tier:</b> optimized for data that is infrequently accessed and stored for at least 30 days (i.e. invoices for your customers) 
   - <b>Archive Access Tier:</b> appropriate for data that is rarely accessed and stored for at least 180 days with flexible latency requirements (i.e. for long term backups) 
-- -
+- Options for Moving Files
+   - <b>AzCopy</b>
+   - <b>Azure Storage Explore</b>
+   - <b>Azure File Sync</b> 
+- Migration Options
+   - <b>Azure Migrate</b>
+   - <b>Azure Data Box</b> 
 
-• compare Azure storage services
-• describe storage tiers
-• describe redundancy options
-• describe storage account options and storage types
-• identify options for moving files, including AzCopy, Azure Storage Explorer, and Azure
-File Sync
-• describe migration options, including Azure Migrate and Azure Data Box
 ### Describe Azure Identity, Access, and Security 
 - <b>Authentication vs. Authorization</b>
   - <b>Authentication (AuthN):</b> the process of establishing the identity of a person or service that wants access to a resource. Involves the act of challenging a part of legitimate credentials and provides the basis for creating a security principal for identity access control.
@@ -203,8 +236,6 @@ File Sync
   - <b>Authorization (AuthZ):</b> the process of establishing what level of access an authenticated person or service has. 
     - specifies what data they're allowed access to and what they can do with it. 
     - It establishes the level of access that an authenticated user has. 
-
-
 - <b>Azure Active Directory (Azure AD)</b>: a cloud-based identity and access management service.  Azure AD enables an organization to control access to applications and resources based on its business requirements.  
   - Azure AD provides services such as
     - <b>Authentication</b> - includes verifying identity to access applications and reousrces.  Also includes providing functionaliy such as self-service password reset, MFA, a custom list of banned passwords, and smart lockout services. 
@@ -213,7 +244,6 @@ File Sync
     - <b>Device Management</b> 
   - <b>Azure AD Connect</b> - synchronizes user identities between on-premises Active Directory and Azure AD. 
 - Azure Active Directory Domain Services (Azure AD DS) 
-
 - <b>Single Sign-On (SSO):</b> SSO enables a user to sign in one time and use that credential to access multiple resources and applications from different providers. 
 - <b>Multifactor Authentication (MFA):</b> MFA is a process where a user is prompted during the sign-in process for an additional form of identification.  Examples include a code from their mobile phone or a fingerprint scan. 
   - MFA provides additional security for your identities by requiring two or more elements to fully authenicate. These elements fall into 3 categories:
@@ -222,9 +252,6 @@ File Sync
     - <b>Something the user <i>is</i></b> - typically some sort of biometric property such as a fingerprint or face scan 
   - MFA increase identity security by limiting the impact of credential exposure. 
 - Passwordless 
--
-descibe external identities and guest access in Azure
-
 - <b>Conditional Access:</b> a tool that Azure AD uses to allow (or deny) access to resources based on identity signals, such as a user's location.
   - These signals include who the user is, where the user is, and what device the user is requesting access from. 
   - Provides a more granular MFA experience for users - i.e. user might not be challenged for a second authentication factor if they are a known location. 
@@ -238,9 +265,7 @@ descibe external identities and guest access in Azure
   - RBAC uses an allow model - RBAC  allows you to perform certain actions when you're assigned a role 
   - You can apply Azure RBAC to an individual person or group.  Can also apply to other special identity types, such as service principals and managed identities. 
   - You can manage access permissions on the Access control (IAM) pane in the Azure portal. 
- 
 - <b>Zero Trust</b> 
-
 - A <b>Defense-in-Depth</b> strategy uses a series of mechanisms to slow the advance of an attack that aims at acquiring unauthorized access to data.  The objective is to protect information and prevent it from being stolen by those who aren't authorized to access it.  
   - Each layer provides protection so that if one layer is breached, a subsequent layer is already in place to prevent further exposure.  This approach removes reliance on any single layer of protection.  It slows down an attack and provides alert telemetry that security teams can act upon, either automatically or manually.  
     - <b>Physical Security</b> - the first line of defense to protect computing hardware in the datacenter 
@@ -265,7 +290,8 @@ descibe external identities and guest access in Azure
       - store sensitive app secrets in a secure storage medium
       - make security a design requirement for all application development
     - <b>Data</b> - controls access to business and customer data that you need to protect
-• Describe the purpose of Microsoft Defender for Cloud
+- <b>Microsoft Defender:</b>
+
 ## Describe Azure Management and Governance
 
 ### Describe Cost Management in Azure
@@ -298,6 +324,7 @@ descibe external identities and guest access in Azure
 
  - <b>Resource tags:</b>  a way to organize your resources.  Tags provide extra information, or metadata, about your resources. 
   - Tags also help you manage costs associated with the different groups of Azure products/resources. 
+  - a resource tag consists of a name and a value.  you can assign one or more tags to each Azure resource. 
 
   
 ### Describe Features and Tools in Azure for Governance and Compliance
@@ -305,12 +332,18 @@ descibe external identities and guest access in Azure
   - You can apply locks to a subscription, resource group, or an individual resource.
     - <b>CanNotDelete</b> - means authorized people can still read and mofiy a resource, but they can't delete the resource without first removing the lock
     - <b>ReadOnly</b> - means authorized people can read a resource, but they can't delete or change the resource.
-- <b>Azure Policy:</b> a service in Azure that enables you to create, assign, and manage policies that control or audit your resources. 
+- <b>Azure Policy:</b> a service in Azure that enables you to create, assign, and manage policies that control or audit your resources. these policies enforce different rules across all of your resource configurations so that those configurations stay compliant with corporate standards. 
+   - enables you to define both individual policies and groups of related policies (known as initiatives) 
+   - evaluates your resources and highlights resources that aren't compliant with the policies that you've created.  can also prevent noncompliant resources from being created.  
 - <b>Azure Blueprints:</b> enables you to define a repeatable set of governance tools and standard Azure resources that your organization requires. 
   - Azure Blueprints orchestrates the deployment of various resource templates and artifacts such as role assignments, policy assignments, Azure Resource Manager templates, and resource groups.  
-• describe the purpose of Azure Blueprints
-• describe the purpose of Azure Policy
-• describe the purpose of the Service Trust Portal
+   - enable you to define the set of standard Azure resources that your organization requires. 
+   - BluePrints are versioned.  Govern multiple subscriptions using Azure BluePrints 
+   - blueprint definition (what should be deployed, blueprint assignment (what was deployed) 
+   - each component in the blueprint definition is known as an artifact.  it is possible for artifacts to have no additional paramters (configurations)  
+- <b>Trust Center:</b> showcases Microsoft's principles for maintaining data integrity in the cloud and how Microsoft implements and supports security, privacy, compliance, and transparency in all Microsoft cloud products and services.  
+- Azure Compliance Documentation 
+- Service Trust Portal
 
 
 ### Describe Features and Tools for Managing and Deploying Azure Resources 
@@ -335,13 +368,32 @@ descibe external identities and guest access in Azure
   - apply access control to all services b/c RBAC is natively integrated into the management platform
   - apply tags to resources to logically organizes all the resources in your subscription 
   - clarify your organization's billing by viewing costs for a group of resources that share the same tag 
-
+- <b>ARM Templates:</b>describe the resources you want to use in a declarative JSON format. ARM template is verified before any code is executed to ensure that the resources will be created and connected correctly.  the template then orchestrates the creation of those resources in parallel. 
+   - can include both PowerShell and/or Azure CLI scripts 
 ### Describe Monitoring Tools in Azure 
 - 3 Primary Azure Monitoring Offerings, each of which is aimed at a specific audience and use case and provides a diverse set of tools, services, programmatic APIs, and more. 
   -  <b>Azure Advisor:</b> evaulates your Azure resources and makes recommendations to help improve reliability, security, and performance, achieve operational excellence, and reduce costs.  Designed to help save you time on cloud optimization.  The recommendation service includes suggested actions you can take right away, postpone, or dismiss.  
       - Recommendations are divided into 5 categories: Reliability, Security, Performance, Cost, Operational Excellence 
       - Used to optimize cost 
+      - use when looking for analysis of your deployed resources 
   - <b>Azure Monitor:</b> a platform for collecting, analyzing, visualizing, and potentially taking action based on the metric and logging data from your entire Azure and on-prem environment.  
     - Use if you want to keep track of performance or issues related to a specific VM, to set upalerts for key events that are related to specific resources, when you want to measure custom events alongside telemetry data.
     - platform used by application insights   
   - <b>Azure Service Health:</b> provides a personalized view of the health of the Azure services, regions, and resources you rely on.  Helps you keep an eye on several event types (i.e. service issues, planned maintenancees, health advisories, etc) 
+- <b>Azure Security Center:</b> a monitoring service that provides visibility of your security posture across all of your services, both on Azure and on-prem.  The term security posture refers to cybersecurity policies and controls, as well as how well you can predict, prevent, and respond to security threats. 
+   - <b>Secure Score:</b> a measure of an organization's security posture. based on security controls, or groups of related security recommendations. your score is based on the percentage of security controls that you satisfy.  
+- <b>Azure Sentinel:</b> is Microsoft's cloud based SIEM (security information and event management) system.  It uses intelligent security analytics and threat analysis
+   - enables you to : collect cloud data at scale, detect previously undetected threats, investigate threats with AI, respond to incidents rapidly 
+- <b>Azure Key Vault:</b> a centralized cloud service for storing an application's secrets in a single, central location.  it provides secure access to sensitive information by providing access control and logging capabilities.  
+   - Azure key vault can: manage secrets, manage encryption keys, manage SSL/TLS certificates, store secrets backed by hardware security modules 
+   - Benefits of Azure Key Vault: centralized application secrets, securely stored secrets and keys, access monitoring and access control, simplified administration of application secrets, integration with other Azure services 
+
+## Other 
+- <b> Azure Dedicated Host:</b> provides dedicated physical servers to host your Azure VMs for Windows and Linux.  A dedicated host is mapped to a physical server in an Azure Datacenter. A host group is a collection of dedicate hosts.  
+   - helps address compliance requirements by deploying workloads in an isolated server 
+- <b>Azure Firewall:</b> is managed cloud-based network security service that helps protect resources in your Azure virtual networks.  
+   - Azure Firewall is a stateful firewall.  A stateful firewall analyzes the complete context of a network connection, not just an individual packet of network traffic.  Azure firewall features HA and unrestricted cloud scalability.  
+-<b>Azure Application Gateway:</b> provides a firewall that's called the web application firewall (WAF).  WAF provides centralized, inbound protection for your web applications against common exploits and vulnerabilities.  
+- DDoS Protection can help prevent volumetric attacks (goal of attack is to flood network with large amount of semingly legitimate traffic), protocol attacks (exploint weakness in layer 3 and 4 protocol stack), resource layer (app-layer) attacks (only with web app firewall) 
+- Azure firewall and Azure DDoS protection can help control what traffic can come from outside sources. 
+- A <b>Network Security Group (NSG)</b> enables you to filter network traffic to and from Azure resources within an Azure Virtual Network. you can think of NSGs as an <b>internal firewall. </b> An NSG can contain multiple inbound and outbound security rules that enable you to filter traffic to and from resources by source and destination IP address, port and protocol.  
