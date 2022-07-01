@@ -14,13 +14,40 @@ Study Guide / Notes created using: https://docs.microsoft.com/en-us/users/231106
     - i.e. documents, images, audio and video data, and binary files that may not have a specific structure 
 
 ### Identify options for data storage
-• Describe common formats for data files
-• Describe types of databases
+1. Describe common formats for data files
+    - CSV - fields seperated by commas and rows terminated by a new line
+    - JSON - each attribute might be an object or collection of objects
+    - XML (extensible markup language) - uses tags enclosed in angle brackets to define elements and attributes
+    - Binary Large Object (BLOB) - files stored as binary data (1s and 0s) - images, video, audio, and app-specific docs
+    - optimized file formats - enable compression, indexing, and efficient storage and processing 
+        - Avro - row-based format created by Apache. each record contains a header that describe the structure of the data in the record.  header is stored as JSON.  data is stored as binary information. app uses info in the header to parse the binary data and extract the fields it contains. good format for compressing data and minimizing storage and network bandwidth requirements
+        - ORC (optimized row columnar format) - organizes data into columns rather than rows - developed by HortonWorks for optimizing read and write operations in Apache Hive. ORC file contains stripes of data. each stripe holds the data for a column or set of columns. a stripe contains an index into the rows in the stripe, the data for each row, and a footer that holds statistical info for each column
+        - Parquet - another columnar data format. created by Cloudera and Twitter. contains row groups.  data for each column is stored together in the same rwo group. each row group contains one or more chunks of data. includes metadata that describes the set of rows found in each chunk. specializes in storing and processing nested data types efficiently.  supports very efficient compression and encoding schemas.  
+2. Describe types of databases
+    - a database is used to define a central system in which data can be stored and queried 
+    - relational database - commonly used to store and query structured data. data stored in tables represent entities. each instance of an entity is assigned a primary key (PK) that uniquely identifies it, and these keys are used to reference the entity instance in other tables. tables are managed and queried using SQL 
+    - non-relational database - data management system that does not apply a relational schema to the data. often referred to as NoSQL database, even though some support a variant of the sql lanugage. 
+        - key-value databases - each record consists of a unique key and an associated value, which can be any format
+        - document database - specific form of key-value database in which the value is a JSON document (or other document)
+        - column family database - stores tabular data comprising rows and columns but you can divide the columns into groups known as column families. each column family can hold a set of columns that are logically related together. 
+        - graph database - stores entities as nodes with links to define relationships between them 
 
 ### Describe common data workloads
-• Describe features of transactional workloads
-• Describe features of analytical workloads
-
+1. Describe features of transactional workloads
+    - a transactional system records transactions that encapsulate specific events the organization wants to track (think of a transaction as a small, discrete, unit of work) 
+    - transactional systems are often high-volume, sometimes handling millions of transactions per day. 
+    - the work performed by transactional systems is often referred to as Online Transactional Processing (OLTP) 
+    - OLTP solutions rely on a database system in which data storage is optimized for both read and write operations in order to support transactional workloads in which data are received through CRUD operations (create, retrieve, update, delete) 
+    - OLTP systems enforce transactions that support so called ACID semantics 
+        - Atomicity - each transaction is treated as a single unit, which succeeds completely or fails completely 
+        - Consistency - transactions can only take the data in the database from one valid state to another
+        - Isolation - concurrent transactions cannot interfere with one another, and must result in a consistent database state
+        - Durability - when a transaction has been committed, it will remain committed. 
+    - OLTP systems are typically used to support live apps that process business data (LOB apps) 
+2. Describe features of analytical workloads
+    - typically uses read-only (or read-mostly) systems that store vast volumes of historical data or business metrics. analytics can be based on a snapshot of data at any given point in time, or a series of snapshots 
+    - an OLAP model is an aggregated type of data storage that is optimized for analytical workloads. 
+  
 ### Identify roles and responsibilities for data workloads
 1. Describe responsibilities for database administrators
     - manage databases, assign permissions to users, store backup copies of data and restore data in the event of a failure  
@@ -31,15 +58,14 @@ Study Guide / Notes created using: https://docs.microsoft.com/en-us/users/231106
 
 ## Identify considerations for relational data on Azure (20—25%)
 ### Describe relational concepts
-• Identify features of relational data
-• Describe normalization and why it is used
-• Identify common structured query language (SQL) statements
-• Identify common database objects
+1. Identify features of relational data
+2. Describe normalization and why it is used
+3. Identify common structured query language (SQL) statements - ddl, dml etc 
+4. Identify common database objects
 
 ### Describe relational Azure data services
-• Describe the Azure SQL family of products including Azure SQL Database, Azure SQL
-• Managed Instance, and SQL Server on Azure Virtual Machines
-• Identify Azure database services for open-source database systems
+1. Describe the Azure SQL family of products including Azure SQL Database, Azure SQL Managed Instance, and SQL Server on Azure Virtual Machines
+2. Identify Azure database services for open-source database systems
 
 ## Describe considerations for working with non-relational data on Azure (15—20%)
 ### Describe capabilities of Azure storage
@@ -80,19 +106,34 @@ Study Guide / Notes created using: https://docs.microsoft.com/en-us/users/231106
     - key in Azure Table Storage consists of 2 elements: the partition key and a row key 
 
 ### Describe capabilities and features of Azure Cosmos DB
-• Identify use cases for Azure Cosmos DB
-• Describe Azure Cosmos DB APIs
+1. Identify use cases for Azure Cosmos DB
+2. Describe Azure Cosmos DB APIs
 
 ## Describe an analytics workload on Azure (25—30%)
 ### Describe common elements of a modern data warehouse
-• Describe considerations for data ingestion and processing
-• Describe options for analytical data stores
-• Describe Azure services for data warehousing, including Azure Synapse Analytics, Azure
+1. Describe considerations for data ingestion and processing
+2. Describe options for analytical data stores
+3. Describe Azure services for data warehousing, including Azure Synapse Analytics, Azure
 Databricks, Azure HDInsight, and Azure Data Factory
 ### Describe consideration for real-time data analytics
-• Describe the difference between batch and streaming data
-• Describe technologies for real-time analytics including Azure Stream Analytics, Azure Synapse
+1. Describe the difference between batch and streaming data
+    - Data processing is the conversion of raw data to meaningful information through a process - 2 general ways to process data include batch processing and stream processing
+    - batch processing - multiple data records are collected and stored before being processed together in a single operation. can process on a scheduled time interval, or it could be triggered when a certain amount of data has arrived or as the result of some event. 
+        - suitable for handling large datasets efficiently
+        - high latency - typically a few hours (latency is time it takes for data to be received and processed) 
+        - for complex analytics 
+    - stream processing - a source of data is constantly monitored and processed in real time as new data events occur. each new piece of data is processed when it arrives. 
+        - intended for individual records or micro batches of few records 
+        - low latency - seconds to milliseconds 
+        - used for simple response functions, aggregates, or calculations such as rolling averages 
+2. Describe technologies for real-time analytics including Azure Stream Analytics, Azure Synapse
 Data Explorer, and Spark structured streaming
+    - Azure Stream Analytics - PaaS solution you can use to define streaming jobs that ingest data from a streaming source, apply a perpetual query, and write results to output.
+        - service for complex event processing and analysis of streaming data. 
+    - Spark Structured Streaming - open-source library that enables you to develop complex streaming solutions on Apache Spark Based services in Azure Synapse Analytics, Azure Databricks, and Azure HDInsight 
+    - Azure Data Explorer - high performance database and analytics service that is optimized for ingesting and querying batch or streaming data with a time-series element, and which can be used as a standalone Azure service or as an Azure synapse data explorer runtime in Azure Synapse Analytics Workspace 
+        - standalone service for efficiently analyzing data. uses KQL 
+       
 ### Describe data visualization in Microsoft Power BI
 1. Identify capabilities of Power BI
     - Power BI is a suite of tools and services that data analysts can use to build interactive data visualizations for business users to consume.  Tools include Power BI Desktop, Power BI Service, Power BI Phone App, web browser. 
