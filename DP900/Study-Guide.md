@@ -59,14 +59,53 @@ Study Guide / Notes created using: https://docs.microsoft.com/en-us/users/231106
 ## Identify considerations for relational data on Azure (20—25%)
 ### Describe relational concepts
 1. Identify features of relational data
+    - Relational tables are a format for structured data, each row in a table has the same columns.  each column stores data of a specific data type. 
+    - in a relational database, you model collections of entities from the real world as tables. an entity can be anything for which you want to record information.  A table contains rows, and each row represents a single instance of an entity. 
 2. Describe normalization and why it is used
+    - A term used by database professionals for a schema design process that minimizes data duplication and enforces data integrity. 
+    - Normalization involves:
+        - separate each entity into its own table
+        - separate each discrete attribute into its own column
+        - uniquely identify each entity instance (row) using a PK 
+        - use FK columns to link related entities 
 3. Identify common structured query language (SQL) statements - ddl, dml etc 
+    - SQL - Structured Query Language - used to communicate with a relational database, the standard language for relational database management systems. 
+    - standardized by ANSI in 1986 and ISO in 1987. 
+    - variety of dialects of SQL due to proprietary extensions created by different vendors. popular dialects of SQL include:
+        - transact-SQL (T-SQL) - used by Microsoft SQL Server and Azure SQL Services
+        - pgSQL - PostgreSQL
+        - PL/SQL - used by Oracle. PL/SQL stands for Procedural Language/SQL 
+    - SQL Statements are grouped into 3 main logical groups:
+        - Data Definition Language (DDL) - used to create, modify, and remove tables and other objects in a database (table, stored procedures, views, etc.) 
+            - CREATE
+            - ALTER
+            - DROP
+            - RENAME 
+        - Data Control Language (DCL) - used to manage access to objects in a database by granting, denying, or revoking permissions to specific users or groups.
+            - GRANT
+            - DENY
+            - REVOKE
+        - Data Manipulation Language (DML) - used to manipulate rows in tables. enable you to query, insert new rows, or modify existing rows.  can also delete rows if you don't need them. 
+            - SELECT
+            - INSERT
+            - UPDATE
+            - DELETE
 4. Identify common database objects
+    - View - a view is a virtual table based on the results of a SELECT query. can think of a view as a window on specified rows in one or more underlying tables.
+    - Stored Procedure - a stored procedure defines SQL statements that can be run on command. stored procedures are used to encapsulate programmatic logic in a database for actions that applications need to perform when working with data. 
+    - Index - an index helps you search for data in a table. think of an index over a table like an index at the back of a book. an index consumes storage space, and each time you insert, update, or delete data in a table, the indexes for the table must be maintained. 
 
 ### Describe relational Azure data services
 1. Describe the Azure SQL family of products including Azure SQL Database, Azure SQL Managed Instance, and SQL Server on Azure Virtual Machines
+    - Azure SQL Database - a fully managed, highly scalable PaaS database service. Azure SQL database is available as a Single Database or an Elastic Pool. 
+    - Azure SQL Managed Instance - a PaaS option that provides near 100% compatibility with on-prem SQL server instances while abstracting the underlying hardware and OS.
+    - SQL Server on Azure Virtual Machines - a virtual machine running in Azure with an installation of SQL server.  the use of a VM makes this an IaaS solution that virtualizes hardware infrastructure for compute, storage, and networking in Azure. Great option for lift and shift migration of existing on-prem SQL server installations. 
+    - Azure SQL Edge - SQL engine that is optimized for IoT scenarios that need to work with streaming time-series data 
 2. Identify Azure database services for open-source database systems
-
+    - MySQL 
+    - MariaDB - built-in support for temporal data. a table can hold several versions of data, enabling an app to query the data as it appeared at some point in the past
+    - PostgreSQL - allows you to store custom data types, with their own non-relational properties.  store and manipulate geometric data, such as lines, circles and polygons. pgsql 
+    
 ## Describe considerations for working with non-relational data on Azure (15—20%)
 ### Describe capabilities of Azure storage
 1. Describe Azure Blob storage
@@ -107,14 +146,48 @@ Study Guide / Notes created using: https://docs.microsoft.com/en-us/users/231106
 
 ### Describe capabilities and features of Azure Cosmos DB
 1. Identify use cases for Azure Cosmos DB
+    - Azure Cosmos DB supports multiple APIs that enable developers to use the programming semantics of many common kinds of data store to work with data in a Cosmos DB Database. 
+    - uses indexes and partitioning to provide fast read and write performance and scale to massive volumes of data. 
+    - highly scalable database management system 
+    - automatically allocates space in a container for your partitions, and each partition can grow up to 10GB in size. 
+    - indexes are created and maintained automatically.
+    - highly suitable for IoT and Telematics, Retail and marketing, gaming, web and mobile applications 
 2. Describe Azure Cosmos DB APIs
+    - enable developers to migrate data from commonly used NoSQL stores and apply their existing programming skills
+    - Core (SQL) API - native API in Cosmos DB manage data in JSON document format, and despite being a NoSQL data storage solution, uses SQL syntax to work with the data
+    - MongoDB API - a popular open source database in which data is stored in binary JSON (BSON) format
+    - Table API - used to work with data in key-value tables, similar to Azure Table Storage 
+    - Cassandra API - compatabile with Apache Cassandra that uses column-family storage structure 
+    - Gremlin API - used with data in a graph structure; in which entities are defined as vertices that form nodes in connected graph. Nodes are connected by edges that represent relationships 
 
 ## Describe an analytics workload on Azure (25—30%)
 ### Describe common elements of a modern data warehouse
 1. Describe considerations for data ingestion and processing
+    - ETL - Extract, Transform, Load
+    - ELT - Extract, Load, Transform 
+    - Large-scale data ingestion on Azure is best implemented by creating pipelines that orchestrate ETL processes. you can create and run pipelines using Azure Data Factory, or use the same pipeline engine in Azure Synapse Analytics.
+    - pipelines consist of one or more activities that operate on data. an input dataset provides the source data, and activities can be defined as a data flow that incrementally manipulates the data until an output dataset is produced. 
+    - pipelines use dlinked services to load and process data - enabling you to use the right technology for each step of the workflow. 
 2. Describe options for analytical data stores
+    - Data warehouses - a relational database in which the data is stored in a schema that is optimized for data analytics rather than transactional workloads. 
+        - fact tables - where numeric values are stored 
+        - dimension tables - represent entities by which the data can be aggregated 
+        - fact and dimension table schema is called a star schema.
+        - star schema - often extended into a snowflake schema by adding additional tables related to the dimension tables to represent dimensional hierarchies 
+        - great choice when you have transactional data that can be organized into a structured schema of tables, and you want to use SQL to query them 
+    - Data lakes - a file store, usually on a distributed file system for high performance data access. technologies like Spark or Hadoop are often used to process queries on the store files and return data for reporting and analytics. these systems often apply a schema-on-read approach to define tabular schemas on semi-structured data files at the point where the data is read for analysis, without applying constraints when it's stored.  great for supporting a mix of structured, semi-structured, and even unstructured data that you want to analyze without the need for schema enforcement when the data is written to the store. 
+    - hybrid approaches - combine features of data lakes and data warehouses in a lake database or data lakehouse. 
+        - the raw data is stored as files in a data lake, and a relational storage layer abstracts the underlying files and expose them as tables, which can be queried using SQL. 
+        - SQL pools in Azure Synapse Analytics include PolyBase, which enables you to define external tables based on files in a datalake (and other sources) and query them using SQL. 
+        - Synapse Analytics also supports a lake database approach in which you can use db templates to define the relational schema of your data warehouse, while storing underyling data in data lake storage - separating the storage and compute for your data warehousing solution 
+        - data lakehouses - relatively new approach in Spark-based systems, and are enabled through technologies like Delta Lake; which adds relational storage capabilities to Spark, so you can define tables that enforce schemas and transactional consistency, support batch-loaded and streaming data sources, and provide a SQL API for querying.   
 3. Describe Azure services for data warehousing, including Azure Synapse Analytics, Azure
 Databricks, Azure HDInsight, and Azure Data Factory
+    - Azure Synapse Analytics - includes Apache Spark runtime
+    - Azure Databricks - built on Apache Spark, and offers native SQL capabilities as well as workload-optimized Spark clusters for data analytics and data science
+    - Azure HDInsight 
+    - Azure Data Factory - 
+    
 ### Describe consideration for real-time data analytics
 1. Describe the difference between batch and streaming data
     - Data processing is the conversion of raw data to meaningful information through a process - 2 general ways to process data include batch processing and stream processing
