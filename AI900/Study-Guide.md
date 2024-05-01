@@ -82,3 +82,78 @@ Study Guide / Notes created using:
 
 ## AI Fundamentals - Course Notes 
 - https://learn.microsoft.com/en-us/training/courses/ai-900t00
+
+<details>
+  <summary><h3>Fundamental AI Concepts</h3></summary>
+
+</details>
+
+<details>
+  <summary><h3>Fundamentals of Machine Learning</h3></summary>
+
+</details>
+
+<details>
+  <summary><h3>Fundamentals of Azure AI Services</h3></summary>
+
+</details>
+
+<details>
+  <summary><h3>Fundamentals of Computer Vision</h3></summary>
+
+</details>
+
+<details>
+  <summary><h3>Fundamentals of Facial Recognition</h3></summary>
+
+</details>
+
+<details>
+  <summary><h3>Fundamentals of optical character recognition</h3></summary>
+
+</details>
+
+<details>
+  <summary><h3>Fundamentals of Text Analysis with the Language Service</h3></summary>
+
+</details>
+
+<details>
+  <summary><h3>Fundamentals of question answering with the Language Service</h3></summary>
+
+</details>
+
+<details>
+  <summary><h3>Fundamentals of conversational language understanding</h3></summary>
+
+</details>
+
+<details>
+  <summary><h3>Fundamentals of Azure AI Speech</h3></summary>
+
+</details>
+
+<details>
+  <summary><h3>Fundamentals of Azure AI Document Intelligence</h3></summary>
+
+</details>
+
+<details>
+  <summary><h3>Fundamentals of Knowledge Mining and Azure AI Search</h3></summary>
+
+</details>
+
+<details>
+  <summary><h3>Fundamentals of Generative AI</h3></summary>
+
+</details>
+
+<details>
+  <summary><h3>Fundamentals of Azure OpenAI Service</h3></summary>
+
+</details>
+
+<details>
+  <summary><h3>Fundamentals of Responsible Generative AI</h3></summary>
+
+</details>
