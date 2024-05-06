@@ -131,7 +131,43 @@ Identify Azure tools and services for computer vision tasks
 
 
 ### Fundamentals of Machine Learning
-
+- goal of ML is to use data to create a predictive model that can be incorporated into a software app or service.
+- ML has it's origins in statistics and mathematical modeling of data. fundamental idea of ML is to use data from past observations to predict unknown outcomes or values.
+- Types of ML
+    - Supervised ML - ML algorithms in which the training data includes both feature values and known label values.
+      - Regression - label predicted by the model is a numeric value
+      - Classification - label represents a categorization, or class.
+        - Binary Classification
+        - Multiclass Classification 
+    - Unsupervised ML - involves training models using data that consists of only feature values without any known labels.
+        - Clustering - these algorithms identify similarities between observations based on their features, and groups them into discrete clusters. 
+- Regression
+    - these models are trained to predict numeric label values based on training data that includes both features and known labels.
+    - Regression evaluation metrics
+        - Mean Absolute Error (MAE)
+        - Mean Squared Error (MSE)
+        - Root Mean Squared Error (RMSE)
+        - Coefficient of Determination (R-squared) 
+    - Iterative training 
+- Binary Classification
+    - supervised ML technique. these algorithms are used to train a model that predicts one of two possible labels or a single class.
+    - Binary classification evaluation metrics
+        - Confusion matrix - a matrix of the number of correct and incorrect predictions for each possible class label. 
+        - Accuracy - the proportion of predictions that the model got right
+        - Recall - a metric that measures the proportion of positive cases that the model identified correctly.
+        - Precision - measures the proportion of predicted positive cases where the true label is actually positive.
+        - F1-score - an overall metrics that combines recall and precision.
+        - Area under the curve (AUC) - another name for the true positive rate (TPR). equivalent metric is the false positive rate (FPR).  these metrics are used to evaluate a model by plotting a received operator characteristic (ROC) curve that compares the TPR and FPR for every possible threshold value between 0.0 and 1.0. 
+- Multiclass classification
+    - used to calculate probability for multiple class labels.
+    - one-vs-rest (OvR) algorithms - trains a binary classification function for each class, each calculating the probability that the observation is an example of the target class. each function calculates the probability of the observation being a specific class compared to any other class.
+    - Multinomial algorithms - creates a single function that returns a multi-valued output.  the output is a vector (an array of values) that contains the probability distribution of all possible classes - with a probability score for each class which when totaled add up to 1.0
+- Clustering
+    - form of unsupervised ML. Observations are grouped into clusters based on similarities in their data values, or features.
+    - no known labels in the dataset, just features.
+    - evaluating a clustering model: average distance to clusetr center, average distance to other center, max distance to cluster center, silhoutette 
+- Deep Learning - an adv. form of ML that tries to emulate the way the human brain learns. the creation of an artificial neural network that simulates electrochemical activity in biological neurons by using mathematical functions. 
+- Azure Machine Learning
 
 ### Fundamentals of Azure AI Services
 
