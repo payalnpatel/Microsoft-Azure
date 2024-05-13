@@ -170,10 +170,29 @@ Identify Azure tools and services for computer vision tasks
 - Azure Machine Learning
 
 ### Fundamentals of Azure AI Services
-
+- Azure AI Services built on 3 principles: prebuilt and ready to use, accessed through APIs, available on Azure
+- APIs - application programming interfaces that define the information that is required for one component to use the services of the other. enable software components to communicate, so one side can be updated without stopping the other from working.
+- Azure AI services are cloud-based, you need to create a resource to use them. 2 types of AI service resources: multi-service, or single-service.
+- Multi-service resource: a resource created in Azure portal that provides access to multiple Azure AI services with a single key and endpoint. use this when you need several AI services or are exploring AI capabilities. when you use an Azure AI services resource, all your AI services are billed together.
+- Single-service resources: a resource created in the Azure portal that provides access to a single Azure AI service, such as Speech, Vision, Language, etc. Each Azure AI service has a unique key and endpoint. These resources might be used when you only require one AI service or want to see cost info separately.
+- studio interfaces provide a friendly user interface to explore Azure AI services - Vision Studio, Language Studio, Speech Studio, Content Safety Studio.
+- authentication - the process of verifying that the user or service is who they say they are, and that they are authorized to use the service.
+- Part of what an API does is to handle authentication. whenever a request is made to use an Azure AI services resource, that request must be authenticated. this authentication process uses an endpoint and a resource key. the resource key protects the privacy of your resource - to ensure this is always secure, this can be changed periodically.
+- API - application programming interfaces (APIs) enable software components to communicate, so one side can be updated without stopping the other from working.
+- Artificial Intelligence (AI) - computer programs that respond in ways that are normally associated with human reasoning, learning, and thought.
+- Azure AI Services - a portfolio of AI services that can be incorporated into applications quickly and easily without specialist knowledge. Azure AI services is also the name for the multi-service resource created in the Azure portal that provides access to several different Azure AI servicdes with a single key and endpoint.
+- Endpoint - the location of a resource, such as an Azure AI service.
+- Key - a private string that is used to authenticate a request.
+- Machine learning - the ability for computer programs to learn from large amounts of data, in a process known as "training".
+- Multi-service resource - the AI service resource created in the Azure portal that provides access to a bundle of AI services.
+- Single-service resource - a resource create in the Azure portal that provides access to a single Azure AI service, such as Speech, Vision, Language, etc. Each Azure AI Service has a unique key and endpoint.
+- RESTful API - a scalable web application programming interface used to access Azure AI services. 
 
 ### Fundamentals of Computer Vision
-
+- Computer vision is one of the core areas of AI, and focuses on creating solutions that enable AI applications to "see" the world and make sense of it.
+- To a computer, an image is an array of numeric pixel values. each pixel has a value between 0 (black) and 255 (white); with values between these bounds representing shades of gray. a single layer of pixel values represents a grayscale image. in reality, most digital images are multidimensional and consist of 3 layers (known as channels) that represent red, green, and blue (RGB) color hues.
+- Using filters to process images - a filter is defined by one or more arrays of pixel values, called filter kernels. the kernel is then convovled across the image, calculating a weighted sum for each 3x3 patch of pixels and assigning the result to a new image.
+- in-progress
 
 ### Fundamentals of Facial Recognition
 
