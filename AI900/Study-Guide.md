@@ -192,7 +192,24 @@ Identify Azure tools and services for computer vision tasks
 - Computer vision is one of the core areas of AI, and focuses on creating solutions that enable AI applications to "see" the world and make sense of it.
 - To a computer, an image is an array of numeric pixel values. each pixel has a value between 0 (black) and 255 (white); with values between these bounds representing shades of gray. a single layer of pixel values represents a grayscale image. in reality, most digital images are multidimensional and consist of 3 layers (known as channels) that represent red, green, and blue (RGB) color hues.
 - Using filters to process images - a filter is defined by one or more arrays of pixel values, called filter kernels. the kernel is then convovled across the image, calculating a weighted sum for each 3x3 patch of pixels and assigning the result to a new image.
-- in-progress
+- CNNs - Convolutional neural networks - one of the most common ML model architectures for computer vision. CNNs use filters to extract numeric feature maps from images, and then feed the feature values into a deep learning model to generate a label prediction.
+- During the training process for a CNN, filter kernels are initially defined using randomly generated weight values.
+- CNNs have been at the core of computer vision solutions for many years. commonly used to solve image classification problems, they are also the basis for more complex computer vision models.
+- Object detection models combine CNN feature extraction lyaers with the identification of regions of interest in images to locate multiple classes of object in the same image.
+- in another AI discipline, natural language processing (NLP), another type of neural network architecture, called a transformer has enabled the development of sophisticated models for language. Transformers work by processing huge volumes of data, and encoding language tokens (representing individual words or phrases) as vector-based embeddings (arrays of numeric values). an image encoder extracts features from iamges based on pixel values and combines them with text embeddings by cerating a language encoder. 
+- multi-modal models - model is trained using a large volume of captioned images, with no fixed labels.
+- Microsoft Florenece model - multi-modal model. trained with huge volumes of captioned images from the Internet, it includes both a language encoder and an image encoder. Florenece is an example of a foundation model. in other words, a pre-trained general model on which you can build multiple adaptieve models for specialist tasks. Florence can be used as a foundation model for adaptive models that perform: image classification, object detection, captioning, tagging
+- image classification - identifying which category an image belongs
+- object detection - locating individual objects within an iamge
+- captioning - generating appropriate descriptions of images
+- tagging - compiling a list of relevant text tags for an image
+- Azure AI Vision service provides prebuilt and customizable computer vision models that are based on the Florence foudnation model and provides various powerful capabilities.
+- To use Azure AI Vision, a resource needs to be created in a Azure subscription.
+- Azure AI Vision - a specific resource for the Azure AI Vision service - use this if you don't intend to use other Azure AI Services, or if you want to track utilization and costs for this service separately.
+- Azure AI Services - a general resource that includes Azure AI Vision and other Azure AI Services.  use this resource type if you polan to use multiple AI Services and want to simlify administration and development.
+- An image classification model is used to predict the category, or class of an image.
+- Object detection models detect and classify objects in an image, returning bounding box coordinates to locate each object.
+- Computer vision is built on the analysis and manipulation of numeric pixel values in images. ML models are trained using a large volume of images to enable common computer vision scenarios, such as image classification, object detection, automated image tagging, optical character recognition, etc. 
 
 ### Fundamentals of Facial Recognition
 
