@@ -241,7 +241,21 @@ Identify Azure tools and services for computer vision tasks
     - Other issues - face detection can be impaired by extreme face angles, extreme lighting, and occlusion (objects block the face such as a hand) 
 
 ### Fundamentals of optical character recognition
-
+- OCR enables AI to read text in images, enabling applications to extract information from photographs, scanned documents, and other sources of digitized text.
+- Automating text processing can improve the speed and efficiency of work by removing the need for manual data entry. the ability to recognize printed and handwritten text in images is beneficial in scenarios such as note taking, digitizing medical records or historical documents, scanning checks for bank deposits, etc.
+- The ability for computer systems to process written and printed text is an area of AI where computer vision intersects with natural language processing. Vision capabilities are needed to 'read' the text, and then NLP capabilities make sense of it.
+- OCR is the foundation of processing text in images and uses ML models that are trained to recognize individual shapes as letters, numerals, punctuation, or other elements of text. Much of the early work on implementing this kind of capability was performed by postal services to support automatic sorting of mail based on postal codes.
+- Azure AI Vision service has the ability to extract machine-readable text from images. Azure AI Vision's Read API is the OCR engine that powers text extraction from images, PDFs, and TIFF files. OCR for images is optimized for general, non-document images that makes it easier to embed OCR in your user experience scenarios.
+- Read API, a.k.a., Read OCR engine, uses the latest recognition models and is optimized for images that have a significant amount of text or have considerable visual noise.
+- the OCR engine takes in an image file and identifies bounding boxes, or coordinates, where items are located within an image. in OCR, the model identifies bounding boxes around anything that appears to be text in the image.
+- Calling the Read API returns results arranged in the following hierarchy:
+    - Pages - one for each page of text, including info about page size and orientation
+    - Lines - the lines of text on a page
+    - Words - the words in a line of text, including the bounding box coordinates and text itself 
+- Azure AI Vision or Azure AI services
+- Once you've created a resource, can use Azure AI Visions Read API through: Vision Studio, REST API, SDKs (Python, C#, JavaScript)
+- Azure AI Vision studio gives access to APIs through GUI & does not require coding to get started.
+- Azure AI Vision - raw results returned in JSON -- to build OCR apps need to work with an SDK or REST API.
 
 ### Fundamentals of Text Analysis with the Language Service
 
