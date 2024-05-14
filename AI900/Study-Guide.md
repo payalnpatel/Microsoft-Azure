@@ -212,7 +212,33 @@ Identify Azure tools and services for computer vision tasks
 - Computer vision is built on the analysis and manipulation of numeric pixel values in images. ML models are trained using a large volume of images to enable common computer vision scenarios, such as image classification, object detection, automated image tagging, optical character recognition, etc. 
 
 ### Fundamentals of Facial Recognition
-
+- face detection and analysis is an area of AI which uses algorithms to locate and analyze human faces in images or video content.
+- There are many applications for face detection, analysis, and recognition -- security, social media, advertising, missing personas, identity validation
+- Face detection involves identifying regions of an image that contain a human face, typically by returning bounding box coordinates that form a rectangle around the face.
+- With face analysis, facial features can be used to train machine learning models to return other information, such as facial features such as nose, eyes, eyebrows, lips, etc.
+- A further application of facial analysis is to train a machine learning model to identify known individuals from their facial features. This is known as facial recognition, and uses multiple images of an individual to train a model. This trains the model so that it can detect those individuals in new images on which it was trained.
+- Azure AI Face service - provides pre-trained models to detect, recognize, and analyze faces.
+- Microsoft Azure provides multiple AI services that can be used to detect and analyze faces, including:
+    - Azure AI Vision - offers face detection and some basic face analysis, such as returning the bounding box coordinates around an image
+    - Azure AI Video Indexer - can be used to detect and identify facess in a video
+    - Azure AI Face - offers pre-built algorithms that can detect, recognize, and analyze faces 
+- Azure face service can return the rectangle coordinates for any human face found in an image, as well as a series of attributes related to the face such as:
+    - Accessories
+    - Blur - how blurred the face is
+    - Exposure - whether image is under or over exposed.
+    - Glasses
+    - Head pose - the face's orientation in a 3D space
+    - Mask - whether individual is wearing a mask
+    - Noise - refers to visual noise in the image.
+    - Occlusion - determines if there might be objects blocking the face in the image. 
+- Responsible AI use
+    - Limited access policy requires customers to submit an intake form to access add'l Azure AI Face service capabilitys -- the ability to compare faces for similarity, the ability to identify named individuals in an image.
+- Azure resources for Face -- Face or Azure AI Services
+- Tips for more accurate results
+    - Image format - support images are JPEG, PNG, GIF, and BMP
+    - File size - 6 MB or smaller
+    - Face size range -- 26 x 26 up to 4096 x 4096 pixels -- smaller or larger faces will not be detected
+    - Other issues - face detection can be impaired by extreme face angles, extreme lighting, and occlusion (objects block the face such as a hand) 
 
 ### Fundamentals of optical character recognition
 
