@@ -258,7 +258,19 @@ Identify Azure tools and services for computer vision tasks
 - Azure AI Vision - raw results returned in JSON -- to build OCR apps need to work with an SDK or REST API.
 
 ### Fundamentals of Text Analysis with the Language Service
-
+- Natural Language Processing (NLP) - an area within AI that deals with understanding written or spoken language, and responding in kind.
+- Text analysis - describes NLP processes that extract information from unstructured text.
+- Azure AI Language - a cloud-based service that includes features for understanding and analyzing text. Includes various features that support sentiment analysis, key phrase identification, text summarization, and conversational language understanding.
+- corpus - a body of text
+- Tokenization 
+    - the first step in analyzing a corpus, is to break it down into tokens. tokens can be generated for words, partial words, combination of words, and punctuation.
+    - Text normalization - before generating tokens, you may choose to normalize the text by removing punctuation and changing all words to lower case. For word frequency analysis, this improves overall performance.  however, semantic meaning may be lost
+    - stop word removal - stop words are words that can be removed from the analysis. (i.e, 'the', 'a', 'at', etc.) These words make it easier for people to read, but add little semantic meaning. by removing these words, a text analysis solution may be able to better identify the important words.
+    - n-grams - multi-term phrases.  A single word is a unigram, two word phrase is a bi-gram, a three word phrase is a tri-gram, etc. by considering words as a group of words, a ML model can make better sense of the text.
+    - Stemming - a technique in which algorithms are applied to consolidate words before counting them, so that words with the same root are interpetted as being the same token (i.e. power, powered, powerful)
+- Frequency Analysis
+    - 
+- =
 
 ### Fundamentals of question answering with the Language Service
 
