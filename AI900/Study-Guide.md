@@ -269,11 +269,25 @@ Identify Azure tools and services for computer vision tasks
     - n-grams - multi-term phrases.  A single word is a unigram, two word phrase is a bi-gram, a three word phrase is a tri-gram, etc. by considering words as a group of words, a ML model can make better sense of the text.
     - Stemming - a technique in which algorithms are applied to consolidate words before counting them, so that words with the same root are interpetted as being the same token (i.e. power, powered, powerful)
 - Frequency Analysis
-    - 
-- =
+    - after tokenizing the words, you can perform some analysis to count the number of occurrences of each token.
+- ML for text clasification - a common application is to train a model that classifies text as positive or negative in order to perform sentiment analysis or opnion mining.
+- Semantic language models
+- Azure AI Language - text analysis features 
+  - Named entity recognition - identifies people, places, events, and more. this feature can also be customoized to extract custom categories.
+  - Entity linking - identifies known entities together with a link to Wikipedia
+  - Personal identifying information (PII) detection
+  - language detection
+  - sentiment analysis and opinion mining
+  - summarization
+  - key phrase extraction
 
 ### Fundamentals of question answering with the Language Service
-
+- Conversational AI describes solutions that enable a dialog between an AI agent and a human. generically, conversational AI agents are known as bots. People can engage with bots through channels such as web chat interfaces, email, social media platforms, etc.
+- Azure AI Language's question answering feature provides ability to create conversational AI solutions.
+- Question answering supports natural language AI workloads that require an automated conversational element.
+- Can create a user support bot using a combination of 2 services: Azure AI Language (includes a custom question answering feature that enables you to create a knowledge base of question and answer pairs that can be queried using natural language input), and Azure AI Bot Service (provides a framework for developing, publishing, and managing bots on Azure).
+- Azure AI Language customer answering feature enables you to define and pubish a knowledge base of questions and answers with support for natural language querying.
+- Azure AI Bot Service - can use a knowledge base to deliver a bot that responds intelligently to user questions and over multiple communication channels. 
 
 ### Fundamentals of conversational language understanding
 
