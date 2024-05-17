@@ -302,7 +302,15 @@ Identify Azure tools and services for computer vision tasks
 - When you are satisfied with the results from the training and testing, you can publish your Conversational Language Understanding application to a prediction resource for consumption.
 
 ### Fundamentals of Azure AI Speech
-
+- AI speech capabilities enables us to manage home & auto systems with voice instructions, get answers from computers for spoken questions, generate captions from audio, etc.
+- AI system must support 2 capabilities - speech recognition & speech synthesis
+- speech recognition - the ability to detect and interpret spoken language
+- speech synthesis - the ability to generate spoken output
+- Azure AI speech - provides speech to text and text to speech capabilities through speech recognition and synthesis. can use prebuilt and custom Speech service models for a variety of tasks
+- speech recognition - takes the spoken word and converts it into data that can be processed - often by transcribing it into text.
+- acoustic model - a model that converts the audio signal into phonemes (representations of specific sounds).
+- language model - a model that maps phonemes to words, usually using a statistical algorithm that predicts the most probable sequence of words based on the phonemes.
+- in progress 
 
 ### Fundamentals of Azure AI Document Intelligence
 
