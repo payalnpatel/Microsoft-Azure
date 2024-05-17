@@ -290,7 +290,16 @@ Identify Azure tools and services for computer vision tasks
 - Azure AI Bot Service - can use a knowledge base to deliver a bot that responds intelligently to user questions and over multiple communication channels. 
 
 ### Fundamentals of conversational language understanding
-
+- Azure AI Language - conversational language feature
+- utterance - an example of something a user might say, and which your application must interpret. (i.e 'switch on the fan', 'turn off the light')
+- entities - an item to which an utterance refers. (i.e. fan, light - can think of these as specific instances of a general device entity)
+- intent - represents the purpose, or goal, expressed in a user's utterance (i.e. TurnOn intent for the above examples) -- None intent is a fallback, and is typically used to provide a general response to users when their requests don't match any other intent.
+- Conversational language understanding provides a comprehensive collection of prebuilt domains that include pre-defined intents and entities for common scenarios; which you can use as a starting point for your model. You can also create your own entities and intents.
+- Azure AI Language's conversational language understanding feature enables you to author a language model and use it for predictions. Authoring a model involves defining entities, intents, and utterances. Generating predictions involves publishing a model so that client applications can take user input and return responses.
+- Azure AI Language, Azure AI Services -- resource
+- After you have defined the intents and entities in your model, and included a suitable set of sample utterances; the next step is to train the model. Training is the process of using your sample utterances to teach your model to match natural language expressions that a user might say to probable intents and entities.
+- Then you can test the model
+- When you are satisfied with the results from the training and testing, you can publish your Conversational Language Understanding application to a prediction resource for consumption.
 
 ### Fundamentals of Azure AI Speech
 
