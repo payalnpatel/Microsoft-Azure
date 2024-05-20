@@ -310,10 +310,23 @@ Identify Azure tools and services for computer vision tasks
 - speech recognition - takes the spoken word and converts it into data that can be processed - often by transcribing it into text.
 - acoustic model - a model that converts the audio signal into phonemes (representations of specific sounds).
 - language model - a model that maps phonemes to words, usually using a statistical algorithm that predicts the most probable sequence of words based on the phonemes.
-- in progress 
+- speech synthesis - concerned with vocalizing data, usually by converting text to speech. a speech synthesis solution typically requires: the text to be spoken, the voice to be used to vocalize the speech
+- to synthesize speech, the system typically tokenizes the text to break it down into individual words, and assigns phonetic sounds to each word. it then breaks the phonetic transcription into prosodic units (ushc as phrases, clauses, or sentences) to create phonemes that will be converted to audio format.
+- Azure AI Speech services includes speech to text API and text to speech API
+- Azure resources - speech resources, Azure AI services resource
+- speech to text API - can perform real-time or batch transcription of audio into a text format
+- text to speech API - enables you to convert text to audible speech, which can be played directly through a computer speaker or written to an audio file. can specify the voice to be used to vocalize the text.
 
 ### Fundamentals of Azure AI Document Intelligence
-
+- document intelligence describes AI capabilities that support processing text and making sense of information in text. an extension of OCR (optical character recognition), document intelligence takes the next step a person might after reading a form or document.  It automates the process of extracting, understanding, and saving the data in text.
+- Azure AI Document Intelligence - can analyze documents and forms with prebuilt and custom models.
+- Document intelligence rlies on machine learning models that are trained to recognize data in text. ability to extract text, layout, and key-value pairs are known as document analysis. document analysis provides locations of text on a page identified by bounding box coordinates.
+- challenge - documents / forms come in all different formats --> separate ML models need to be trained to provide high quality results for different forms and documents.
+- Azure AI Document intelligence consist of features grouped by model type:
+  - prebuilt models
+  - custom models
+  - document analysis 
+- Azure resource - Document intelligence, or Azure AI services 
 
 ### Fundamentals of Knowledge Mining and Azure AI Search
 
