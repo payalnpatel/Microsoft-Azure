@@ -329,10 +329,12 @@ Identify Azure tools and services for computer vision tasks
 - Azure resource - Document intelligence, or Azure AI services 
 
 ### Fundamentals of Knowledge Mining and Azure AI Search
-
+- 
 
 ### Fundamentals of Generative AI
-
+- AI imitates human behavior by using ML to interact with the environment and execute tasks without explicit directions on what to output.
+- Generative AI describes a category of capabilities within AI that create original content. people typically interact with generative AI that has been built into chat applications.
+- Generative AI apps take in natural language 
 
 ### Fundamentals of Azure OpenAI Service
 
